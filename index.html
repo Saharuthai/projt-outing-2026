@@ -231,6 +231,19 @@ html.dark .fp{color:#ff9a90}
 .row .tx .fp .trk img.pl{position:absolute;left:0;top:1px;width:18px;height:18px;margin:0;vertical-align:baseline;animation:planefly 3.6s cubic-bezier(.45,.05,.55,.95) infinite;animation-play-state:paused;opacity:0}
 .row.vis .fp .tr,.row.vis .fp .pl{animation-play-state:running}
 .fp .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none;display:none}
+/* place chips (Chinese name + pinyin + Amap link) */
+.pcs{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.box .pcs{margin-top:10px}
+.pc{display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 10px 6px 12px;border-radius:12px;background:rgba(36,64,110,.08);border:1px solid rgba(36,64,110,.18);color:inherit;text-decoration:none;font-weight:400;-webkit-text-fill-color:currentColor;transition:transform .12s,background-color .2s}
+.pc:active{transform:scale(.98)}
+.pc .zh{font:700 16px/1.3 'PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;color:var(--tx)}
+.pc .nm{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.pc .py{font-size:13px;line-height:1.3;color:#55555f;font-style:italic}
+.pc .go{flex:none;font-size:12px;font-weight:800;color:#fff;background:#24406e;border-radius:99px;padding:3px 10px}
+.row.hi .pc{background:rgba(155,28,20,.08);border-color:rgba(155,28,20,.2)}
+html.dark .pc{background:rgba(143,176,255,.1);border-color:rgba(143,176,255,.25)}
+html.dark .pc .py{color:#c4c0d1}
+html.dark .pc .go{background:#4a6fc9}
 /* counters */
 .cu{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* checklist */
@@ -298,11 +311,11 @@ var DAYS=[
  ['01:55–07:10','fly',1,{th:'China Eastern MU548 BKK → เซี่ยงไฮ้ (PVG) · กลุ่ม B2 · กระเป๋า 23 กก. (1 ชิ้น) (มีแซนด์วิชแจกก่อนขึ้นเครื่อง)',en:'China Eastern MU548 BKK → Shanghai (PVG) · Group B2 · baggage 23 kg (1 piece) (sandwiches provided before boarding)'}],
  ['06:25–07:55','bag',0,{th:'รับกระเป๋า / ทำธุระส่วนตัว',en:'Collect luggage / personal errands'}],
  ['09:00','',0,{th:'เดินทางเข้าเมือง',en:'Travel into the city'}],
- ['10:00','pagoda',0,{th:'วัดหลงหัว',en:'Longhua Temple'}],
+ ['10:00','pagoda',0,{th:'วัดหลงหัว',en:'Longhua Temple'},['longhua']],
  ['12:00–13:00','eat',0,{th:'มื้อกลางวัน ร้าน Heji',en:'Lunch at Heji restaurant'}],
  ['13:00–14:00','hotel',0,{th:'ไปโรงแรม Jin Jiang Tower พักผ่อนตามอัธยาศัย (เช็คอินหลัง 14:00)',en:'Go to Jin Jiang Tower hotel and rest (check-in from 14:00)'}],
  ['16:00','',0,{th:'ออกจากโรงแรม',en:'Leave the hotel'}],
- ['16:30–17:30','cam',0,{th:'ถ่ายรูปกลุ่มที่ The Bund',en:'Group photo at The Bund'}],
+ ['16:30–17:30','cam',0,{th:'ถ่ายรูปกลุ่มที่ The Bund',en:'Group photo at The Bund'},['bund']],
  ['17:30–18:00','eat',0,{th:'เดินทางไปมื้อเย็น ร้าน Jinchengyanfu (มีเครื่องดื่ม)',en:'Travel to dinner at Jinchengyanfu restaurant (drinks included)'}],
  ['21:00','',0,{th:'กลับโรงแรม',en:'Return to hotel'}]],
  dress:[{im:['07-26-smart-casual'],l:[
@@ -316,7 +329,7 @@ var DAYS=[
  ['07:30','pin',0,{th:'รวมตัวที่ห้องประชุมโรงแรม',en:'Gather at the hotel meeting room'}],
  ['08:30–11:30','',0,{th:'กิจกรรมเสริมสร้างความบันเทิง',en:'Fun team activities'}],
  ['12:00','eat',0,{th:'มื้อกลางวัน ร้าน Jinmiluo',en:'Lunch at Jinmiluo restaurant'}],
- [{th:'บ่าย',en:'Afternoon'},'',0,{th:'เที่ยวเมืองน้ำ Zhouzhuang และจูเจียเจี่ยว พร้อมกิจกรรมล่าสมบัติ',en:'Visit Zhouzhuang water town and Zhujiajiao, with a treasure hunt'}],
+ [{th:'บ่าย',en:'Afternoon'},'',0,{th:'เที่ยวเมืองน้ำ Zhouzhuang และจูเจียเจี่ยว พร้อมกิจกรรมล่าสมบัติ',en:'Visit Zhouzhuang water town and Zhujiajiao, with a treasure hunt'},['zhouzhuang','zhujiajiao']],
  ['16:30','',0,{th:'กลับโรงแรม',en:'Return to hotel'}],
  ['18:00','cam',0,{th:'ถ่ายภาพที่ฉากหลังตามธีมงาน',en:'Photo activity at the event-themed backdrop'}],
  ['19:00–22:00','eat',1,{th:'งานเลี้ยงจีนที่โรงแรม + คาราโอเกะ',en:'Chinese banquet at the hotel + karaoke'}]],
@@ -336,10 +349,10 @@ var DAYS=[
  ph:['05a-chenghuangmiao','05b-florentia-village'],
  rows:[
  [{th:'เช้า',en:'Morning'},'',0,{th:'อาหารเช้าที่ห้องอาหารโรงแรม',en:'Breakfast at the hotel restaurant'}],
- ['09:00','',0,{th:'เช็คเอาต์ แล้วเที่ยวถนนโบราณ Chenghuangmiao',en:'Check-out, then visit Chenghuangmiao old street'}],
+ ['09:00','',0,{th:'เช็คเอาต์ แล้วเที่ยวถนนโบราณ Chenghuangmiao',en:'Check-out, then visit Chenghuangmiao old street'},['chenghuang']],
  [{th:'กลางวัน',en:'Noon'},'eat',0,{th:'มื้อกลางวัน ร้าน Fuyuanchunxiao',en:'Lunch at Fuyuanchunxiao restaurant'}],
- [{th:'บ่าย',en:'Afternoon'},'shop',0,{th:'ช้อปที่ Florentia Village Outlet',en:'Shop at Florentia Village Outlet'}],
- ['17:00','',0,{th:'ทุกกลุ่มเดินทางไปสนามบินผู่ตง (PVG)',en:'All groups travel to Pudong Airport (PVG)'}],
+ [{th:'บ่าย',en:'Afternoon'},'shop',0,{th:'ช้อปที่ Florentia Village Outlet',en:'Shop at Florentia Village Outlet'},['florentia']],
+ ['17:00','',0,{th:'ทุกกลุ่มเดินทางไปสนามบินผู่ตง (PVG)',en:'All groups travel to Pudong Airport (PVG)'},['pvg']],
  ['19:00–22:25','fly',1,{th:'Shanghai Airlines FM853 PVG → BKK · กลุ่ม B2 · ถึงสุวรรณภูมิ 22:25',en:'Shanghai Airlines FM853 PVG → BKK · Group B2 · arrives Suvarnabhumi 22:25'}],
  [{th:'ค่ำ',en:'Night'},'',0,{th:'พักที่ Asia Airport Hotel (มีอาหารค่ำแบบกล่องให้ในห้อง)',en:'Stay at Asia Airport Hotel (boxed late-night meal in the room)'}]],
  dress:[{im:['07-29-smart-casual'],l:[[{th:'SMART CASUAL',en:'SMART CASUAL'},{th:'เสื้อสีขาว เบลเซอร์สีเบจ กางเกงยีนส์สีเข้ม',en:'White top, beige blazer, dark jeans'}]]}]},
@@ -403,6 +416,24 @@ var TD=todayIdx();
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function pill(color,icon,text){return '<div class="pill" style="background:'+color+'"><img src="img/'+icon+'.svg" alt="">'+esc(text)+'</div>'}
+var PL={
+ longhua:['龙华寺','Lónghuá Sì','上海'],
+ bund:['外滩','Wàitān','上海'],
+ zhouzhuang:['周庄古镇','Zhōuzhuāng Gǔzhèn'],
+ zhujiajiao:['朱家角古镇','Zhūjiājiǎo Gǔzhèn','上海'],
+ chenghuang:['上海城隍庙','Shànghǎi Chénghuáng Miào','上海'],
+ florentia:['上海佛罗伦萨小镇','Shànghǎi Fóluólúnsà Xiǎozhèn','上海'],
+ pvg:['浦东国际机场','Pǔdōng Guójì Jīchǎng','上海'],
+ sbx:['星巴克臻选上海烘焙工坊','Xīngbākè Zhēnxuǎn Shànghǎi Hōngbèi Gōngfáng','上海'],
+ tunnel:['外滩观光隧道','Wàitān Guānguāng Suìdào','上海'],
+ nanjing:['南京路步行街','Nánjīng Lù Bùxíngjiē','上海'],
+ rockbund:['外滩源','Wàitānyuán','上海'],
+ anfu:['安福路','Ānfú Lù','上海'],
+ xintiandi:['新天地','Xīntiāndì','上海'],
+ disney:['上海迪士尼乐园','Shànghǎi Díshìní Lèyuán','上海']
+};
+function amap(k){var d=PL[k];return 'https://uri.amap.com/search?keyword='+encodeURIComponent(d[0])+(d[2]?'&city='+encodeURIComponent(d[2]):'')+'&src=woxa-outing&coordinate=gaode&callnative=1'}
+function chips(keys){if(!keys||!keys.length)return '';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];return '<a class="pc" href="'+amap(k)+'" target="_blank" rel="noopener"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span><span class="go">Amap ›</span></a>'}).join('')+'</span>'}
 function cu(n){return '<span class="cu" data-to="'+n+'" style="min-width:'+String(n).length+'ch">'+n+'</span>'}
 function fp(t){var m=String(t).match(/\b[A-Z]{3}\b/g);if(!m||m.length<2)return '';return '<span class="fp" aria-hidden="true"><b>'+m[0]+'</b><span class="trk"><i class="tr"></i><img class="pl" src="img/09-flight-silhouette.svg" alt=""></span><b>'+m[m.length-1]+'</b></span>'}
 function kv(a,b){return '<div class="kv"><b>'+a+'</b><span>'+b+'</span></div>'}
@@ -438,7 +469,7 @@ function dayHTML(i){
  var D=DAYS[i],h='<section class="card" style="--dc:'+D.c+';--dcl:'+D.cl+'"><div class="dh" style="background:'+D.c+'"><img class="ic" src="img/'+D.ic+'.svg" alt=""><div><div class="d1">'+T(UI.day)+' '+(i+1)+'</div><div class="d2">'+T(D.wd)+' '+D.d+' '+T(UI.mon)+' 2026</div></div></div>';
  h+='<div class="ttl">'+esc(T(D.title))+'</div>'+flHTML(i);
  h+='<div class="ph '+(D.ph.length>1?'two':'one')+'">'+D.ph.map(function(p){return '<img src="photo/'+p+'.jpg" alt="" loading="lazy">'}).join('')+'</div>';
- h+='<div class="rows">'+D.rows.map(function(r,k){return '<div class="row'+(r[2]?' hi':'')+'" style="--i:'+k+'"><div class="tm">'+esc(T(r[0]))+'</div><div class="tx">'+ic(r[1])+esc(T(r[3]))+(r[1]==='fly'?fp(T(r[3])):'')+'</div></div>'}).join('')+'</div>';
+ h+='<div class="rows">'+D.rows.map(function(r,k){return '<div class="row'+(r[2]?' hi':'')+'" style="--i:'+k+'"><div class="tm">'+esc(T(r[0]))+'</div><div class="tx">'+ic(r[1])+esc(T(r[3]))+(r[1]==='fly'?fp(T(r[3])):'')+chips(r[4])+'</div></div>'}).join('')+'</div>';
  if(D.extra==='free')h+=freeHTML();
  D.dress.forEach(function(d){
   h+='<div class="dress"><h4>'+T(UI.dress)+'</h4>';
@@ -453,7 +484,7 @@ function dayHTML(i){
 function freeHTML(){
  var P=LANG==='th';
  return '<div class="box c"><img src="img/09-bus-front.svg" alt="" style="filter:invert(28%) sepia(60%) saturate(900%) hue-rotate(130deg)">'+(P?'ติดตามเส้นทางรถบัส Free day กับ HR จากเธรดของ HR เพิ่มเติมได้เลย':"Follow the Free day bus routes with HR in HR's thread for more details")+'</div>'+
- '<div class="box w"><h5>'+(P?'สถานที่แนะนำ':'Recommended places')+'</h5>Starbucks Reserve Roastery · The Bund Sightseeing Tunnel · Nanjing Road · Rock Bund · Anfu Road · Xintiandi · Shanghai Disneyland</div>'+
+ '<div class="box w"><h5>'+(P?'สถานที่แนะนำ':'Recommended places')+'</h5>Starbucks Reserve Roastery · The Bund Sightseeing Tunnel · Nanjing Road · Rock Bund · Anfu Road · Xintiandi · Shanghai Disneyland'+chips(['sbx','tunnel','nanjing','rockbund','anfu','xintiandi','disney'])+'</div>'+
  '<div class="box"><b>'+(P?'รถบัสวัน Free day':'Free day bus')+'</b> '+(P?'ใช้งานได้ 10 ชม./วัน (ตัวอย่าง 09:00 → 19:00) ปรับเวลาออกและกลับโรงแรมได้ภายใน 10 ชม.':'Available 10 hours/day (example: 09:00 → 19:00); departure and return times can be adjusted within 10 hours.')+'</div>'+
  '<div class="box"><b>Disneyland (Plan A)</b> '+(P?'รถออก 08:00 กลับถึงโรงแรมภายใน 20:00 · ตั๋วไม่รวมในแพ็คเกจ ต้องจัดการเอง':'Bus leaves 08:00, back at the hotel by 20:00 · Ticket not included in the package; arrange it yourself.')+'</div>'+
  '<div class="rows" style="padding-top:0"><div class="row"><div class="tm">'+(P?'ค่ำ':'Night')+'</div><div class="tx">'+(P?'ส่งทุกคนกลับโรงแรม (สำหรับผู้ที่เดินทางกับรถบัสและไกด์ของบริษัท)':'Everyone is taken back to the hotel (for those on the company bus with a guide)')+'</div></div></div>';
