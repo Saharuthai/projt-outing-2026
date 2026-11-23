@@ -433,7 +433,11 @@ var PL={
  disney:['上海迪士尼乐园','Shànghǎi Díshìní Lèyuán','上海']
 };
 function amap(k){var d=PL[k];return 'https://uri.amap.com/search?keyword='+encodeURIComponent(d[0])+(d[2]?'&city='+encodeURIComponent(d[2]):'')+'&src=woxa-outing&coordinate=gaode&callnative=1'}
-function chips(keys){if(!keys||!keys.length)return '';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];return '<a class="pc" href="'+amap(k)+'" target="_blank" rel="noopener"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span><span class="go">Amap ›</span></a>'}).join('')+'</span>'}
+function amapApp(k){var q=encodeURIComponent(PL[k][0]);
+ if(/Android/i.test(navigator.userAgent))return 'androidamap://poi?sourceApplication=woxa-outing&keywords='+q+'&dev=0';
+ if(/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))return 'iosamap://poi?sourceApplication=woxa-outing&name='+q+'&keywords='+q+'&dev=0';
+ return ''}
+function chips(keys){if(!keys||!keys.length)return '';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];return '<a class="pc" data-pl="'+k+'" href="'+amap(k)+'" target="_blank" rel="noopener"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span><span class="go">Amap ›</span></a>'}).join('')+'</span>'}
 function cu(n){return '<span class="cu" data-to="'+n+'" style="min-width:'+String(n).length+'ch">'+n+'</span>'}
 function fp(t){var m=String(t).match(/\b[A-Z]{3}\b/g);if(!m||m.length<2)return '';return '<span class="fp" aria-hidden="true"><b>'+m[0]+'</b><span class="trk"><i class="tr"></i><img class="pl" src="img/09-flight-silhouette.svg" alt=""></span><b>'+m[m.length-1]+'</b></span>'}
 function kv(a,b){return '<div class="kv"><b>'+a+'</b><span>'+b+'</span></div>'}
@@ -631,6 +635,11 @@ window.addEventListener('resize',function(){layoutAll()});
 window.addEventListener('load',layoutAll);
 try{document.fonts.ready.then(layoutAll)}catch(e){}
 document.addEventListener('click',function(e){
+ var pcl=e.target.closest('.pc');
+ if(pcl){var app=amapApp(pcl.getAttribute('data-pl'));if(app){e.preventDefault();var gone=false,web=pcl.href;
+  var hid=function(){gone=true};document.addEventListener('visibilitychange',hid,{once:true});window.addEventListener('pagehide',hid,{once:true});
+  setTimeout(function(){document.removeEventListener('visibilitychange',hid);if(!gone&&!document.hidden)window.open(web,'_blank')},1600);
+  window.location.href=app}return}
  var b=e.target.closest('[data-i]');
  if(b&&!b.disabled){go(+b.getAttribute('data-i'),true);return}
  var c=e.target.closest('[data-ck]');
