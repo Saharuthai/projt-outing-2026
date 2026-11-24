@@ -231,26 +231,29 @@ html.dark .fp{color:#ff9a90}
 .row .tx .fp .trk img.pl{position:absolute;left:0;top:1px;width:18px;height:18px;margin:0;vertical-align:baseline;animation:planefly 3.6s cubic-bezier(.45,.05,.55,.95) infinite;animation-play-state:paused;opacity:0}
 .row.vis .fp .tr,.row.vis .fp .pl{animation-play-state:running}
 .fp .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none;display:none}
-/* place chips (Chinese name + pinyin + Amap link) */
-.pcs{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+/* place cards (Chinese name + pinyin + map links) */
+.pcs{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .box .pcs{margin-top:10px}
-.pcw{display:flex;gap:6px;align-items:stretch}
-.pcw .pc{flex:1;min-width:0}
-.cp{flex:none;width:44px;display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid rgba(36,64,110,.25);background:#fff;color:#24406e;-webkit-text-fill-color:#24406e;border-radius:12px;font-weight:800;padding:0;transition:transform .12s,background-color .2s}
+.pcw{display:flex;flex-direction:column;gap:8px;padding:8px 8px 8px 12px;border-radius:12px;background:rgba(36,64,110,.07);border:1px solid rgba(36,64,110,.18);font-weight:400}
+.row.hi .pcw{background:rgba(155,28,20,.07);border-color:rgba(155,28,20,.2)}
+.pcw .top{display:flex;align-items:center;gap:8px}
+.pcw .nm{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.pcw .zh{font:700 16px/1.3 'PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;color:var(--tx)}
+.pcw .py{font-size:13px;line-height:1.3;color:#55555f;font-style:italic}
+.cp{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(36,64,110,.25);background:#fff;color:#24406e;-webkit-text-fill-color:#24406e;border-radius:12px;font-size:18px;font-weight:800;padding:0;transition:transform .12s,background-color .2s}
 .cp:active{transform:scale(.95)}
 .cp.ok{background:#1b7f4b;color:#fff;-webkit-text-fill-color:#fff;border-color:#1b7f4b}
+.pcw .btns{display:flex;gap:8px;padding-right:0}
+.ab{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:4px 8px;border-radius:10px;font-weight:800;font-size:13px;line-height:1.2;text-decoration:none;transition:transform .12s}
+.ab:active{transform:scale(.97)}
+.ab.am{background:#24406e;color:#fff;-webkit-text-fill-color:#fff}
+.ab.gm{background:#fff;color:#1a4fa0;-webkit-text-fill-color:#1a4fa0;border:1px solid rgba(26,79,160,.35)}
+html.dark .pcw{background:rgba(143,176,255,.1);border-color:rgba(143,176,255,.25)}
+html.dark .pcw .py{color:#c4c0d1}
 html.dark .cp{background:#2a2740;color:#a9c0ff;-webkit-text-fill-color:#a9c0ff;border-color:rgba(143,176,255,.3)}
 html.dark .cp.ok{background:#2fa66a;color:#fff;-webkit-text-fill-color:#fff}
-.pc{display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 10px 6px 12px;border-radius:12px;background:rgba(36,64,110,.08);border:1px solid rgba(36,64,110,.18);color:inherit;text-decoration:none;font-weight:400;-webkit-text-fill-color:currentColor;transition:transform .12s,background-color .2s}
-.pc:active{transform:scale(.98)}
-.pc .zh{font:700 16px/1.3 'PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;color:var(--tx)}
-.pc .nm{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
-.pc .py{font-size:13px;line-height:1.3;color:#55555f;font-style:italic}
-.pc .go{flex:none;font-size:12px;font-weight:800;color:#fff;background:#24406e;border-radius:99px;padding:3px 10px}
-.row.hi .pc{background:rgba(155,28,20,.08);border-color:rgba(155,28,20,.2)}
-html.dark .pc{background:rgba(143,176,255,.1);border-color:rgba(143,176,255,.25)}
-html.dark .pc .py{color:#c4c0d1}
-html.dark .pc .go{background:#4a6fc9}
+html.dark .ab.am{background:#4a6fc9}
+html.dark .ab.gm{background:#2a2740;color:#a9c0ff;-webkit-text-fill-color:#a9c0ff;border-color:rgba(143,176,255,.35)}
 /* counters */
 .cu{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* checklist */
@@ -424,29 +427,43 @@ var TD=todayIdx();
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function pill(color,icon,text){return '<div class="pill" style="background:'+color+'"><img src="img/'+icon+'.svg" alt="">'+esc(text)+'</div>'}
 var PL={
- longhua:['龙华寺','Lónghuá Sì','上海'],
- bund:['外滩','Wàitān','上海'],
- zhouzhuang:['周庄古镇','Zhōuzhuāng Gǔzhèn'],
- zhujiajiao:['朱家角古镇','Zhūjiājiǎo Gǔzhèn','上海'],
- chenghuang:['上海城隍庙','Shànghǎi Chénghuáng Miào','上海'],
- florentia:['上海佛罗伦萨小镇','Shànghǎi Fóluólúnsà Xiǎozhèn','上海'],
- pvg:['浦东国际机场','Pǔdōng Guójì Jīchǎng','上海'],
- sbx:['星巴克臻选上海烘焙工坊','Xīngbākè Zhēnxuǎn Shànghǎi Hōngbèi Gōngfáng','上海'],
- tunnel:['外滩观光隧道','Wàitān Guānguāng Suìdào','上海'],
- nanjing:['南京路步行街','Nánjīng Lù Bùxíngjiē','上海'],
- rockbund:['外滩源','Wàitānyuán','上海'],
- anfu:['安福路','Ānfú Lù','上海'],
- xintiandi:['新天地','Xīntiāndì','上海'],
- disney:['上海迪士尼乐园','Shànghǎi Díshìní Lèyuán','上海']
+ /* [Chinese name, pinyin, lat, lon]  lat/lon = WGS84 from OpenStreetMap (Nominatim). sbx has no verified point, so it uses a name search. */
+ longhua:['龙华寺','Lónghuá Sì',31.176792,121.44725],
+ bund:['外滩','Wàitān',31.235336,121.487632],
+ zhouzhuang:['周庄古镇','Zhōuzhuāng Gǔzhèn',31.11508,120.845943],
+ zhujiajiao:['朱家角古镇','Zhūjiājiǎo Gǔzhèn',31.116346,121.049214],
+ chenghuang:['上海城隍庙','Shànghǎi Chénghuáng Miào',31.227879,121.488191],
+ florentia:['上海佛罗伦萨小镇','Shànghǎi Fóluólúnsà Xiǎozhèn',31.197896,121.76014],
+ pvg:['浦东国际机场','Pǔdōng Guójì Jīchǎng',31.142736,121.804113],
+ sbx:['星巴克臻选上海烘焙工坊','Xīngbākè Zhēnxuǎn Shànghǎi Hōngbèi Gōngfáng'],
+ tunnel:['外滩观光隧道','Wàitān Guānguāng Suìdào',31.24155,121.486085],
+ nanjing:['南京路步行街','Nánjīng Lù Bùxíngjiē',31.237684,121.475302],
+ rockbund:['外滩源','Wàitānyuán',31.244389,121.48416],
+ anfu:['安福路','Ānfú Lù',31.215618,121.438035],
+ xintiandi:['新天地','Xīntiāndì',31.221931,121.470437],
+ disney:['上海迪士尼乐园','Shànghǎi Díshìní Lèyuán',31.146252,121.656283]
 };
-function amap(k){var d=PL[k];return 'https://uri.amap.com/search?keyword='+encodeURIComponent(d[0])+(d[2]?'&city='+encodeURIComponent(d[2]):'')+'&src=woxa-outing&coordinate=gaode&callnative=1'}
+function wgs2gcj(lat,lon){
+ var a=6378245.0,ee=0.00669342162296594323;
+ function tl(x,y){var r=-100+2*x+3*y+0.2*y*y+0.1*x*y+0.2*Math.sqrt(Math.abs(x));r+=(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3;r+=(20*Math.sin(y*Math.PI)+40*Math.sin(y/3*Math.PI))*2/3;r+=(160*Math.sin(y/12*Math.PI)+320*Math.sin(y*Math.PI/30))*2/3;return r}
+ function tn(x,y){var r=300+x+2*y+0.1*x*x+0.1*x*y+0.1*Math.sqrt(Math.abs(x));r+=(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3;r+=(20*Math.sin(x*Math.PI)+40*Math.sin(x/3*Math.PI))*2/3;r+=(150*Math.sin(x/12*Math.PI)+300*Math.sin(x/30*Math.PI))*2/3;return r}
+ var dl=tl(lon-105,lat-35),dn=tn(lon-105,lat-35),rad=lat/180*Math.PI,m=Math.sin(rad);m=1-ee*m*m;var sm=Math.sqrt(m);
+ dl=(dl*180)/((a*(1-ee))/(m*sm)*Math.PI);dn=(dn*180)/(a/sm*Math.cos(rad)*Math.PI);return [lat+dl,lon+dn]}
+/* Amap: pin by WGS84 coordinate (Amap converts), else name search. */
+function amap(k){var d=PL[k];
+ if(d[2]!=null)return 'https://uri.amap.com/marker?position='+d[3]+','+d[2]+'&name='+encodeURIComponent(d[0])+'&coordinate=wgs84&src=woxa-outing&callnative=0';
+ return 'https://uri.amap.com/search?keyword='+encodeURIComponent(d[0])+'&city='+encodeURIComponent('上海')+'&src=woxa-outing&callnative=0'}
+/* Google Maps: inside mainland China its map uses GCJ-02, so convert WGS84 first; else name search. */
+function gmap(k){var d=PL[k];
+ if(d[2]!=null){var g=wgs2gcj(d[2],d[3]);return 'https://www.google.com/maps/search/?api=1&query='+g[0].toFixed(6)+'%2C'+g[1].toFixed(6)}
+ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(d[0])}
 function copyText(t,btn){
  var done=function(){var o=btn.getAttribute('data-l')||btn.innerHTML;btn.setAttribute('data-l',o);btn.textContent='✓';btn.classList.add('ok');setTimeout(function(){btn.innerHTML=o;btn.classList.remove('ok')},1400)};
  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fb()});return}}catch(e){}
  fb();
  function fb(){try{var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.appendChild(x);x.select();x.setSelectionRange(0,t.length);document.execCommand('copy');document.body.removeChild(x);done()}catch(e){}}
 }
-function chips(keys){if(!keys||!keys.length)return '';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];return '<span class="pcw"><a class="pc" href="'+amap(k)+'" target="_blank" rel="noopener"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span><span class="go">Amap ›</span></a><button class="cp" type="button" data-cp="'+d[0]+'" aria-label="'+(LANG==='th'?'คัดลอกชื่อ':'Copy name')+'" title="'+(LANG==='th'?'คัดลอกชื่อจีน':'Copy Chinese name')+'"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></span>'}).join('')+'</span>'}
+function chips(keys){if(!keys||!keys.length)return '';var th=LANG==='th';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];return '<span class="pcw"><span class="top"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span><button class="cp" type="button" data-cp="'+d[0]+'" aria-label="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'" title="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></span><span class="btns"><a class="ab am" href="'+amap(k)+'" target="_blank" rel="noopener">Amap</a><a class="ab gm" href="'+gmap(k)+'" target="_blank" rel="noopener">Google Maps</a></span></span>'}).join('')+'</span>'}
 function cu(n){return '<span class="cu" data-to="'+n+'" style="min-width:'+String(n).length+'ch">'+n+'</span>'}
 function fp(t){var m=String(t).match(/\b[A-Z]{3}\b/g);if(!m||m.length<2)return '';return '<span class="fp" aria-hidden="true"><b>'+m[0]+'</b><span class="trk"><i class="tr"></i><img class="pl" src="img/09-flight-silhouette.svg" alt=""></span><b>'+m[m.length-1]+'</b></span>'}
 function kv(a,b){return '<div class="kv"><b>'+a+'</b><span>'+b+'</span></div>'}
