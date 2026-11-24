@@ -280,6 +280,31 @@ html.dark .plan{border-top-color:rgba(255,255,255,.12)}
 .plan>b{display:block;margin-bottom:2px}
 .steps{margin:8px 0 10px;padding-left:22px;font-size:14.5px;line-height:1.5}
 .steps li{margin:3px 0}
+/* phrases */
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.cat{border:1px solid rgba(11,110,138,.35);background:rgba(11,110,138,.08);color:#0b5a73;-webkit-text-fill-color:#0b5a73;border-radius:99px;min-height:40px;padding:4px 14px;font:700 13.5px 'Noto Sans Thai',sans-serif;transition:transform .12s}
+.cat:active{transform:scale(.96)}
+.phr{padding:12px 0;border-top:1px solid #f0e6da}
+.phr:first-of-type{border-top:0}
+.zhl{font:700 19px/1.35 'PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;color:var(--tx)}
+.pyl{font-size:14px;font-style:italic;color:#55555f;line-height:1.35;margin-top:1px}
+.thl{font-size:15.5px;margin-top:5px;line-height:1.45}
+.enl{font-size:13.5px;color:#55555f;line-height:1.4}
+.pb{display:flex;gap:8px;margin-top:8px}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:2px}
+.nm1{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:76px;padding:6px 2px;border-radius:12px;border:1px solid rgba(11,110,138,.3);background:rgba(11,110,138,.07);color:var(--tx);-webkit-text-fill-color:var(--tx);transition:transform .12s,background-color .2s}
+.nm1:active{transform:scale(.95)}
+.nm1 .zhl{font-size:22px}
+.nm1 .pyl{font-size:12.5px;margin:0}
+.nm1 .nd{font-size:12px;font-weight:800;color:#0b6e8a;-webkit-text-fill-color:#0b6e8a}
+.nm1.on{background:#1b7f4b;border-color:#1b7f4b}
+.nm1.on .zhl,.nm1.on .pyl,.nm1.on .nd{color:#fff;-webkit-text-fill-color:#fff}
+html.dark .cat{border-color:rgba(122,200,224,.35);background:rgba(122,200,224,.1);color:#8cc9dd;-webkit-text-fill-color:#8cc9dd}
+html.dark .phr{border-top-color:#37334d}
+html.dark .pyl,html.dark .enl{color:#c4c0d1}
+html.dark .nm1{border-color:rgba(122,200,224,.3);background:rgba(122,200,224,.08)}
+html.dark .nm1 .nd{color:#8cc9dd;-webkit-text-fill-color:#8cc9dd}
+html.dark .nm1.on{background:#2fa66a;border-color:#2fa66a}
 /* counters */
 .cu{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* checklist */
@@ -444,7 +469,7 @@ var UI={
  team:{th:'ทีมของฉัน: PRJ-T',en:'My team: PRJ-T'},
  n:{th:'รวมทั้งหมด 27 คน',en:'27 people in total'},
  dress:{th:'ชุดที่ใส่ (Dress code)',en:'Dress code'},
- day:{th:'วันที่',en:'Day'},sum:{th:'สรุป',en:'Summary'},today:{th:'วันนี้',en:'Today'},
+ day:{th:'วันที่',en:'Day'},sum:{th:'สรุป',en:'Summary'},phr:{th:'ประโยค',en:'Phrases'},today:{th:'วันนี้',en:'Today'},
  prev:{th:'← ก่อนหน้า',en:'← Previous'},next:{th:'ถัดไป →',en:'Next →'},
  src:{th:'ข้อมูลตามประกาศของ HR และไฟล์สรุปทริปทีม TrustFinance (ข้อมูลเพิ่มเติมจาก Agency: Grandworld Holiday)',en:'Information per HR announcements and the TrustFinance team trip file (additional details from agency Grandworld Holiday)'}
 };
@@ -561,7 +586,7 @@ function placeInd(instant){
  var sc=a.offsetWidth/W;
  IND.style.width=W+'px';IND.style.height=a.offsetHeight+'px';
  IND.style.borderRadius=(12/sc).toFixed(2)+'px / 12px';
- IND.style.backgroundColor=cur===6?'#8c1d18':DAYS[cur].c;
+ IND.style.backgroundColor=cur===6?'#8c1d18':cur===7?'#0b6e8a':DAYS[cur].c;
  IND.style.transform='translate3d('+a.offsetLeft+'px,'+a.offsetTop+'px,0) scaleX('+sc.toFixed(4)+')';
  if(instant){void IND.offsetWidth;IND.classList.remove('nt')}
 }
@@ -573,6 +598,7 @@ function renderTabs(){
   var h='';
   for(var i=0;i<6;i++)h+='<button class="tab" data-i="'+i+'"><b>'+(i+1)+'</b>'+T(DAYS[i].wd)+' '+DAYS[i].d+(i===TD?'<span class="td">'+T(UI.today)+'</span>':'')+'</button>';
   h+='<button class="tab" data-i="6"><b>★</b>'+T(UI.sum)+'</button>';
+  h+='<button class="tab" data-i="7"><b>💬</b>'+T(UI.phr)+'</button>';
   t.insertAdjacentHTML('beforeend',h);TABL=LANG;rebuilt=true;
  }
  [].forEach.call(t.querySelectorAll('.tab'),function(b,i){b.classList.toggle('on',i===cur)});
@@ -670,7 +696,108 @@ function summaryHTML(){
   '<br><b>'+(P?'ไฟฟ้า:':'Power:')+'</b> '+(P?'220V / 50Hz ปลั๊ก Type A, C, I · บริษัทเตรียม Adaptor ให้':'220V / 50Hz, plug Types A, C, I · the company provides adapters')+
   '<br><b>'+(P?'Agency ให้:':'From the agency:')+'</b> '+(P?'Tag PVC, Travel Kit คนละ 1 ชุด, ยา PARACETAMOL และ ENO คนละ 1 ชุด':'PVC bag tag, Travel Kit (1 each), PARACETAMOL and ENO (1 set each)')+'</div></section>';
  h+='<section class="card sc">'+pill('#8c1d18','09-meeting-pin',N.bn)+'<div class="ban">'+BAN.map(function(b){return '<div><b>'+esc(T(b[0]))+':</b> '+esc(T(b[1]))+'</div>'}).join('')+'</div></section>';
- h+='<div class="nav"><button data-i="5">'+T(UI.prev)+'</button><button data-i="0">'+(P?'กลับไปวันที่ 1':'Back to Day 1')+'</button></div>';
+ h+='<div class="nav"><button data-i="5">'+T(UI.prev)+'</button><button data-i="7">'+(P?'ประโยคสนทนา →':'Phrases →')+'</button></div>';
+ return h;
+}
+var PHR=[
+{id:"basic",t:{th:"พื้นฐาน",en:"Basics"},i:[
+["你好","nǐ hǎo","สวัสดี","Hello"],
+["谢谢","xièxie","ขอบคุณ","Thank you"],
+["不客气","bú kèqi","ไม่เป็นไร / ยินดี","You're welcome"],
+["对不起","duìbuqǐ","ขอโทษ","Sorry"],
+["不好意思","bù hǎoyìsi","ขอโทษที / ขอทางหน่อย","Excuse me"],
+["好的","hǎo de","โอเค / ได้","OK / Sure"],
+["不要","bú yào","ไม่เอา","I don't want it"],
+["再见","zàijiàn","ลาก่อน","Goodbye"],
+["我不会说中文","wǒ bú huì shuō zhōngwén","ฉันพูดภาษาจีนไม่ได้","I don't speak Chinese"],
+["你会说英语吗？","nǐ huì shuō yīngyǔ ma?","คุณพูดภาษาอังกฤษได้ไหม","Do you speak English?"],
+["我听不懂","wǒ tīng bu dǒng","ฉันฟังไม่เข้าใจ","I don't understand"],
+["请说慢一点","qǐng shuō màn yìdiǎn","กรุณาพูดช้าลงหน่อย","Please speak more slowly"],
+["请再说一遍","qǐng zài shuō yí biàn","กรุณาพูดอีกครั้ง","Please say it again"],
+["厕所在哪里？","cèsuǒ zài nǎlǐ?","ห้องน้ำอยู่ที่ไหน","Where is the toilet?"]]},
+{id:"food",t:{th:"ร้านอาหาร",en:"Eating out"},i:[
+["请给我菜单","qǐng gěi wǒ càidān","ขอเมนูหน่อย","Menu, please"],
+["有英文菜单吗？","yǒu yīngwén càidān ma?","มีเมนูภาษาอังกฤษไหม","Do you have an English menu?"],
+["我要这个","wǒ yào zhège","ฉันเอาอันนี้ (ชี้เมนู)","I'll have this one (point at the menu)"],
+["不要太辣","bú yào tài là","ไม่เอาเผ็ดมาก","Not too spicy"],
+["我吃素","wǒ chī sù","ฉันกินเจ / มังสวิรัติ","I'm vegetarian"],
+["我对花生过敏","wǒ duì huāshēng guòmǐn","ฉันแพ้ถั่วลิสง","I'm allergic to peanuts"],
+["我对海鲜过敏","wǒ duì hǎixiān guòmǐn","ฉันแพ้อาหารทะเล","I'm allergic to seafood"],
+["请给我一杯热水","qǐng gěi wǒ yì bēi rè shuǐ","ขอน้ำร้อนหนึ่งแก้ว","A glass of hot water, please"],
+["好吃！","hǎochī!","อร่อย!","Delicious!"],
+["打包","dǎbāo","ห่อกลับ","Takeaway / to go"],
+["买单","mǎidān","เช็กบิล","The bill, please"]]},
+{id:"shop",t:{th:"ซื้อของ & จ่ายเงิน",en:"Shopping & paying"},i:[
+["这个多少钱？","zhège duōshao qián?","อันนี้ราคาเท่าไหร่","How much is this?"],
+["太贵了","tài guì le","แพงเกินไป","Too expensive"],
+["可以便宜一点吗？","kěyǐ piányi yìdiǎn ma?","ลดราคาหน่อยได้ไหม","Can you make it cheaper?"],
+["可以用支付宝吗？","kěyǐ yòng zhīfùbǎo ma?","จ่ายด้วย Alipay ได้ไหม","Can I pay with Alipay?"],
+["可以用微信支付吗？","kěyǐ yòng wēixìn zhīfù ma?","จ่ายด้วย WeChat Pay ได้ไหม","Can I pay with WeChat Pay?"],
+["可以刷卡吗？","kěyǐ shuākǎ ma?","รูดบัตรได้ไหม","Can I pay by card?"],
+["我可以试一下吗？","wǒ kěyǐ shì yíxià ma?","ขอลองได้ไหม","Can I try it on?"],
+["有大一点的吗？","yǒu dà yìdiǎn de ma?","มีไซซ์ใหญ่กว่านี้ไหม","Do you have a bigger size?"],
+["有小一点的吗？","yǒu xiǎo yìdiǎn de ma?","มีไซซ์เล็กกว่านี้ไหม","Do you have a smaller size?"],
+["我只是看看","wǒ zhǐshì kànkan","ขอดูเฉยๆ","I'm just looking"],
+["请给我发票","qǐng gěi wǒ fāpiào","ขอใบเสร็จ / ใบกำกับภาษี","A receipt (fapiao), please"],
+["我想退税","wǒ xiǎng tuìshuì","ฉันต้องการขอคืนภาษี","I'd like a tax refund"]]},
+{id:"go",t:{th:"เดินทาง & แท็กซี่",en:"Getting around"},i:[
+["请带我去这里","qǐng dài wǒ qù zhèlǐ","พาไปที่นี่หน่อย (โชว์ที่อยู่)","Please take me here (show the address)"],
+["请打表","qǐng dǎ biǎo","กรุณากดมิเตอร์","Please use the meter"],
+["请在这里停车","qǐng zài zhèlǐ tíngchē","จอดตรงนี้","Please stop here"],
+["地铁站在哪里？","dìtiě zhàn zài nǎlǐ?","สถานีรถไฟใต้ดินอยู่ที่ไหน","Where is the metro station?"],
+["怎么走？","zěnme zǒu?","ไปทางไหน","How do I get there?"],
+["远吗？","yuǎn ma?","ไกลไหม","Is it far?"],
+["我迷路了","wǒ mílù le","ฉันหลงทาง","I'm lost"],
+["我要去机场","wǒ yào qù jīchǎng","ฉันจะไปสนามบิน","I'm going to the airport"]]},
+{id:"hotel",t:{th:"โรงแรม",en:"Hotel"},i:[
+["我预订了房间","wǒ yùdìng le fángjiān","ฉันจองห้องไว้แล้ว","I have a reservation"],
+["请问几点可以入住？","qǐngwèn jǐ diǎn kěyǐ rùzhù?","เช็กอินได้กี่โมง","What time can I check in?"],
+["可以寄存行李吗？","kěyǐ jìcún xíngli ma?","ฝากกระเป๋าได้ไหม","Can I store my luggage?"],
+["我的房卡不能用","wǒ de fángkǎ bù néng yòng","คีย์การ์ดของฉันใช้ไม่ได้","My key card doesn't work"],
+["房间里没有热水","fángjiān lǐ méiyǒu rè shuǐ","ในห้องไม่มีน้ำร้อน","There's no hot water in the room"],
+["可以帮我叫出租车吗？","kěyǐ bāng wǒ jiào chūzūchē ma?","ช่วยเรียกแท็กซี่ให้หน่อยได้ไหม","Could you call a taxi for me?"]]},
+{id:"air",t:{th:"สนามบิน & ศุลกากร",en:"Airport & customs"},i:[
+["我是来旅游的","wǒ shì lái lǚyóu de","ฉันมาท่องเที่ยว","I'm here for tourism"],
+["我们是一个旅行团","wǒmen shì yí gè lǚxíngtuán","เรามาเป็นกรุ๊ปทัวร์","We're a tour group"],
+["我没有需要申报的物品","wǒ méiyǒu xūyào shēnbào de wùpǐn","ฉันไม่มีของต้องสำแดง","I have nothing to declare"],
+["登机口在哪里？","dēngjīkǒu zài nǎlǐ?","ประตูขึ้นเครื่องอยู่ที่ไหน","Where is the boarding gate?"],
+["行李提取处在哪里？","xíngli tíqǔchù zài nǎlǐ?","จุดรับกระเป๋าอยู่ที่ไหน","Where is baggage claim?"],
+["我的行李没有到","wǒ de xíngli méiyǒu dào","กระเป๋าของฉันยังไม่มา","My luggage hasn't arrived"]]},
+{id:"sos",t:{th:"สุขภาพ & ฉุกเฉิน",en:"Health & emergency"},i:[
+["救命！","jiùmìng!","ช่วยด้วย!","Help!"],
+["请帮我叫救护车","qǐng bāng wǒ jiào jiùhùchē","ช่วยเรียกรถพยาบาลหน่อย","Please call an ambulance"],
+["请帮我报警","qǐng bāng wǒ bàojǐng","ช่วยแจ้งตำรวจหน่อย","Please call the police"],
+["我不舒服","wǒ bù shūfu","ฉันไม่สบาย","I don't feel well"],
+["我需要看医生","wǒ xūyào kàn yīshēng","ฉันต้องการพบแพทย์","I need to see a doctor"],
+["我头疼","wǒ tóu téng","ฉันปวดหัว","I have a headache"],
+["我肚子疼","wǒ dùzi téng","ฉันปวดท้อง","I have a stomach ache"],
+["药店在哪里？","yàodiàn zài nǎlǐ?","ร้านขายยาอยู่ที่ไหน","Where is a pharmacy?"],
+["我的手机丢了","wǒ de shǒujī diū le","โทรศัพท์ของฉันหาย","I lost my phone"],
+["我的护照丢了","wǒ de hùzhào diū le","พาสปอร์ตของฉันหาย","I lost my passport"]]},
+{id:"fun",t:{th:"ถ่ายรูป & ทั่วไป",en:"Photos & social"},i:[
+["可以帮我们拍张照片吗？","kěyǐ bāng wǒmen pāi zhāng zhàopiàn ma?","ช่วยถ่ายรูปให้หน่อยได้ไหม","Could you take a photo of us?"],
+["可以和你合影吗？","kěyǐ hé nǐ héyǐng ma?","ถ่ายรูปด้วยกันได้ไหม","Can I take a photo with you?"],
+["太漂亮了！","tài piàoliang le!","สวยมาก!","So beautiful!"],
+["我很喜欢","wǒ hěn xǐhuan","ฉันชอบมาก","I like it a lot"],
+["干杯！","gānbēi!","ชนแก้ว / ดื่มให้หมดแก้ว","Cheers!"],
+["我们是泰国人","wǒmen shì tàiguó rén","เราเป็นคนไทย","We're from Thailand"],
+["现在几点？","xiànzài jǐ diǎn?","ตอนนี้กี่โมง","What time is it?"]]}
+];
+var NUMS=[["一","yī","1"],["二","èr","2"],["三","sān","3"],["四","sì","4"],["五","wǔ","5"],["六","liù","6"],["七","qī","7"],["八","bā","8"],["九","jiǔ","9"],["十","shí","10"],["二十","èrshí","20"],["五十","wǔshí","50"],["一百","yìbǎi","100"],["块","kuài","หยวน / yuan"]];
+function phrasesHTML(){
+ var P=LANG==='th',h='';
+ var th=P;
+ var lbl=th?['ฟังเสียงอ่าน','ฟังแบบพูดช้าๆ','คัดลอก']:['Listen','Listen slowly','Copy'];
+ var spk=function(zh){return CANSAY?'<button class="sp" type="button" data-say="'+zh+'" data-rate="0.85" aria-label="'+lbl[0]+'" title="'+lbl[0]+'"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path class="w1" d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="w2" d="M17.6 6.6a7.7 7.7 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="sp slow" type="button" data-say="'+zh+'" data-rate="0.4" aria-label="'+lbl[1]+'" title="'+lbl[1]+'"><span aria-hidden="true">🐢</span></button>':''};
+ var cp=function(zh){return '<button class="cp" type="button" data-cp="'+zh+'" aria-label="'+lbl[2]+'" title="'+lbl[2]+'"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>'};
+ h+='<section class="card sc"><div class="note" style="margin-top:0">'+(P?'กด <b>ลำโพง</b> เพื่อฟัง · กด <b>เต่า</b> เพื่อฟังแบบช้าๆ · กด <b>ไอคอนคัดลอก</b> แล้ววางในแชท หรือโชว์หน้าจอให้คนจีนอ่านได้':'Tap the <b>speaker</b> to listen · the <b>turtle</b> for slow speech · the <b>copy</b> icon to paste into a chat, or just show your screen')+'</div>'+
+  '<div class="cats">'+PHR.map(function(c){return '<button class="cat" type="button" data-jump="ph-'+c.id+'">'+T(c.t)+'</button>'}).concat('<button class="cat" type="button" data-jump="ph-num">'+(P?'ตัวเลข':'Numbers')+'</button>').join('')+'</div></section>';
+ PHR.forEach(function(c){
+  h+='<section class="card sc" id="ph-'+c.id+'">'+pill('#0b6e8a','09-meeting-pin',T(c.t))+c.i.map(function(x){
+   return '<div class="phr"><div class="zhl" lang="zh-Hans">'+x[0]+'</div><div class="pyl">'+x[1]+'</div><div class="thl">'+x[2]+'</div><div class="enl">'+x[3]+'</div><div class="pb">'+spk(x[0])+cp(x[0])+'</div></div>'}).join('')+'</section>';
+ });
+ h+='<section class="card sc" id="ph-num">'+pill('#0b6e8a','09-meeting-pin',P?'ตัวเลข (ใช้ตอนต่อราคา)':'Numbers (for bargaining)')+'<div class="nums">'+NUMS.map(function(n){return '<button class="nm1" type="button" data-say="'+n[0]+'" data-rate="0.7" aria-label="'+n[0]+' '+n[1]+'"><span class="zhl" lang="zh-Hans">'+n[0]+'</span><span class="pyl">'+n[1]+'</span><span class="nd">'+n[2]+'</span></button>'}).join('')+'</div></section>';
+ h+='<div class="nav"><button data-i="6">'+(P?'← สรุป':'← Summary')+'</button><button data-i="0">'+(P?'กลับไปวันที่ 1':'Back to Day 1')+'</button></div>';
  return h;
 }
 var THEME='auto';try{var _tv=localStorage.getItem('woxa-theme');if(_tv==='dark'||_tv==='light')THEME=_tv}catch(e){}
@@ -734,17 +861,17 @@ function afterRender(){
 }
 function renderMain(dir){
  var m=document.getElementById('main');
- m.innerHTML=cur===6?summaryHTML():dayHTML(cur);
+ m.innerHTML=cur===7?phrasesHTML():cur===6?summaryHTML():dayHTML(cur);
  m.className='';
  if(dir&&mo()){void m.offsetWidth;m.className=dir>0?'in-l':'in-r';setTimeout(function(){if(m.className.indexOf('in-')===0)m.className=''},450)}
  afterRender();
 }
 function render(){renderChrome();renderTabs();renderMain(0);layoutAll()}
 function go(i,scroll){
- if(i<0||i>6)return;
+ if(i<0||i>7)return;
  var dir=i>cur?1:i<cur?-1:0,m=document.getElementById('main');
  cur=i;clearTimeout(swapTm);
- try{history.replaceState(null,'',i===6?'#summary':'#day'+(i+1))}catch(e){try{location.hash=i===6?'summary':'day'+(i+1)}catch(e2){}}
+ try{history.replaceState(null,'',i===7?'#phrases':i===6?'#summary':'#day'+(i+1))}catch(e){try{location.hash=i===7?'phrases':i===6?'summary':'day'+(i+1)}catch(e2){}}
  renderTabs();
  if(scroll){var t=document.getElementById('tabs');window.scrollTo({top:heroH||t.offsetTop,behavior:mo()?'smooth':'auto'})}
  if(dir&&mo()){m.className=dir>0?'out-l':'out-r';swapTm=setTimeout(function(){renderMain(dir)},150)}
@@ -780,7 +907,9 @@ window.addEventListener('resize',function(){layoutAll()});
 window.addEventListener('load',layoutAll);
 try{document.fonts.ready.then(layoutAll)}catch(e){}
 document.addEventListener('click',function(e){
- var spb=e.target.closest('.sp');
+ var jb=e.target.closest('[data-jump]');
+ if(jb){var el=document.getElementById(jb.getAttribute('data-jump'));if(el){window.scrollTo({top:el.getBoundingClientRect().top+(window.pageYOffset||0)-72,behavior:mo()?'smooth':'auto'})}return}
+ var spb=e.target.closest('[data-say]');
  if(spb){sayZh(spb.getAttribute('data-say'),spb,parseFloat(spb.getAttribute('data-rate'))||.85);return}
  var cpb=e.target.closest('.cp');
  if(cpb){copyText(cpb.getAttribute('data-cp'),cpb);return}
@@ -803,6 +932,7 @@ document.addEventListener('touchend',function(e){
 function fromHash(){
  var h=(location.hash||'').replace('#','');
  if(h==='summary')return 6;
+ if(h==='phrases')return 7;
  var m=/^day([1-6])$/.exec(h);
  if(m)return +m[1]-1;
  return TD>=0?TD:0;
