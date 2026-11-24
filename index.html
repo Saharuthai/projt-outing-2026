@@ -243,7 +243,16 @@ html.dark .fp{color:#ff9a90}
 .cp{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(36,64,110,.25);background:#fff;color:#24406e;-webkit-text-fill-color:#24406e;border-radius:12px;font-size:18px;font-weight:800;padding:0;transition:transform .12s,background-color .2s}
 .cp:active{transform:scale(.95)}
 .cp.ok{background:#1b7f4b;color:#fff;-webkit-text-fill-color:#fff;border-color:#1b7f4b}
-.pcw .btns{display:flex;gap:8px;padding-right:0}
+.pcw .btns{display:flex;gap:8px;padding-right:0;align-items:stretch}
+.sp{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:#24406e;color:#fff;-webkit-text-fill-color:#fff;padding:0;transition:transform .12s,background-color .2s}
+.sp:active{transform:scale(.92)}
+.sp .w1,.sp .w2{opacity:.55}
+.sp.on{background:#1b7f4b}
+.sp.on .w1{animation:wv 1s ease-in-out infinite}
+.sp.on .w2{animation:wv 1s .3s ease-in-out infinite}
+html.dark .sp{background:#4a6fc9}
+html.dark .sp.on{background:#2fa66a}
+@keyframes wv{0%,100%{opacity:.25}50%{opacity:1}}
 .ab{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:4px 8px;border-radius:10px;font-weight:800;font-size:13px;line-height:1.2;text-decoration:none;transition:transform .12s}
 .ab:active{transform:scale(.97)}
 .ab.am{background:#24406e;color:#fff;-webkit-text-fill-color:#fff}
@@ -463,7 +472,22 @@ function copyText(t,btn){
  fb();
  function fb(){try{var x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');x.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.appendChild(x);x.select();x.setSelectionRange(0,t.length);document.execCommand('copy');document.body.removeChild(x);done()}catch(e){}}
 }
-function chips(keys){if(!keys||!keys.length)return '';var th=LANG==='th';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];return '<span class="pcw"><span class="top"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span><button class="cp" type="button" data-cp="'+d[0]+'" aria-label="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'" title="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></span><span class="btns"><a class="ab am" href="'+amap(k)+'" target="_blank" rel="noopener">Amap</a><a class="ab gm" href="'+gmap(k)+'" target="_blank" rel="noopener">Google Maps</a></span></span>'}).join('')+'</span>'}
+var CANSAY=('speechSynthesis' in window)&&typeof SpeechSynthesisUtterance!=='undefined';
+function sayZh(t,btn){
+ try{var ss=window.speechSynthesis;ss.cancel();
+  [].forEach.call(document.querySelectorAll('.sp.on'),function(x){x.classList.remove('on')});
+  var u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';u.rate=.8;
+  var vs=ss.getVoices?ss.getVoices():[];
+  var v=vs.filter(function(x){return /^zh[-_]CN/i.test(x.lang)})[0]||vs.filter(function(x){return /^zh/i.test(x.lang)})[0];
+  if(v)u.voice=v;
+  u.onstart=function(){btn.classList.add('on')};
+  u.onend=u.onerror=function(){btn.classList.remove('on')};
+  ss.speak(u);btn.classList.add('on');setTimeout(function(){if(!ss.speaking)btn.classList.remove('on')},600);
+ }catch(e){btn.classList.remove('on')}
+}
+function chips(keys){if(!keys||!keys.length)return '';var th=LANG==='th';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];
+ var spk=(CANSAY&&d[2]!=null)?'<button class="sp" type="button" data-say="'+d[0]+'" aria-label="'+(th?'ฟังเสียงอ่านชื่อจีน':'Hear the Chinese name')+'" title="'+(th?'ฟังเสียงอ่าน':'Listen')+'"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path class="w1" d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="w2" d="M17.6 6.6a7.7 7.7 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>':'';
+ return '<span class="pcw"><span class="top"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span>'+spk+'</span><span class="btns"><a class="ab am" href="'+amap(k)+'" target="_blank" rel="noopener">Amap</a><a class="ab gm" href="'+gmap(k)+'" target="_blank" rel="noopener">Google Maps</a><button class="cp" type="button" data-cp="'+d[0]+'" aria-label="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'" title="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></span></span>'}).join('')+'</span>'}
 function cu(n){return '<span class="cu" data-to="'+n+'" style="min-width:'+String(n).length+'ch">'+n+'</span>'}
 function fp(t){var m=String(t).match(/\b[A-Z]{3}\b/g);if(!m||m.length<2)return '';return '<span class="fp" aria-hidden="true"><b>'+m[0]+'</b><span class="trk"><i class="tr"></i><img class="pl" src="img/09-flight-silhouette.svg" alt=""></span><b>'+m[m.length-1]+'</b></span>'}
 function kv(a,b){return '<div class="kv"><b>'+a+'</b><span>'+b+'</span></div>'}
@@ -661,6 +685,8 @@ window.addEventListener('resize',function(){layoutAll()});
 window.addEventListener('load',layoutAll);
 try{document.fonts.ready.then(layoutAll)}catch(e){}
 document.addEventListener('click',function(e){
+ var spb=e.target.closest('.sp');
+ if(spb){sayZh(spb.getAttribute('data-say'),spb);return}
  var cpb=e.target.closest('.cp');
  if(cpb){copyText(cpb.getAttribute('data-cp'),cpb);return}
  var b=e.target.closest('[data-i]');
