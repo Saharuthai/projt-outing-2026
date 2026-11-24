@@ -369,6 +369,30 @@ html.dark .dress .im img{filter:brightness(.8) contrast(.96)}
 html.dark .ph img,html.dark .hotelimg{filter:brightness(.88)}
 html.dark .hero .bg{filter:brightness(.9)}
 html.dark .foot img{filter:brightness(.85)}
+/* place card v2: name / audio tools (labelled) / map buttons */
+.pcw{gap:10px;padding:12px}
+.pcw .tools{display:flex;border-radius:12px;background:rgba(36,64,110,.08);overflow:hidden;box-shadow:none}
+.pcw .tools button{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:auto;height:auto;min-height:52px;padding:6px 2px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#24406e;-webkit-text-fill-color:#24406e;font:700 11.5px/1.15 'Noto Sans Thai',sans-serif;white-space:nowrap;transition:background-color .2s}
+.pcw .tools button+button{border-left:1px solid rgba(36,64,110,.16)}
+.pcw .tools button{border:0}
+.pcw .tools button:active{background:rgba(36,64,110,.14);transform:none}
+.pcw .tools .em{font-size:18px;line-height:20px;height:20px}
+.pcw .tools svg{height:20px}
+.pcw .tools .sp.on{background:rgba(63,125,92,.18);color:#2f6a4c;-webkit-text-fill-color:#2f6a4c}
+.pcw .tools .cp.ok{background:#3f7d5c;color:#fff;-webkit-text-fill-color:#fff;border-color:transparent}
+.pcw .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0}
+.pcw .btns .ab{display:flex;align-items:center;justify-content:center;gap:5px;flex:none;min-height:42px;padding:4px 6px;border-radius:12px;border:0;font-size:12.5px;font-weight:800;line-height:1.2;text-align:center}
+.pcw .btns .pn{flex:none}
+.pcw .btns .ab.am{background:#24406e;color:#fff;-webkit-text-fill-color:#fff}
+.pcw .btns .ab.gm{background:rgba(36,64,110,.1);color:#24406e;-webkit-text-fill-color:#24406e}
+html.dark .pcw .tools{background:rgba(143,176,255,.1)}
+html.dark .pcw .tools button{background:transparent;border:0;color:#b6c6f0;-webkit-text-fill-color:#b6c6f0}
+html.dark .pcw .tools button+button{border-left:1px solid rgba(143,176,255,.18)}
+html.dark .pcw .tools button:active{background:rgba(143,176,255,.18)}
+html.dark .pcw .tools .sp.on{background:rgba(90,163,125,.25);color:#9be0bc;-webkit-text-fill-color:#9be0bc}
+html.dark .pcw .tools .cp.ok{background:#5aa37d;color:#101012;-webkit-text-fill-color:#101012}
+html.dark .pcw .btns .ab.am{background:#4a6fc9;color:#fff;-webkit-text-fill-color:#fff}
+html.dark .pcw .btns .ab.gm{background:rgba(143,176,255,.14);color:#b6c6f0;-webkit-text-fill-color:#b6c6f0}
 /* theme crossfade */
 html.theming *,html.theming *:before,html.theming *:after{transition-property:background-color,color,border-color,box-shadow,fill,-webkit-text-fill-color,opacity!important;transition-duration:.45s!important;transition-timing-function:ease!important;transition-delay:0s!important}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}.rows:after{transform:none!important}}
@@ -587,10 +611,15 @@ function sayZh(t,btn,rate){
   ss.speak(u);btn.classList.add('on');setTimeout(function(){if(!ss.speaking)btn.classList.remove('on')},600);
  }catch(e){btn.classList.remove('on')}
 }
-function chips(keys){if(!keys||!keys.length)return '';var th=LANG==='th';return '<span class="pcs">'+keys.map(function(k){var d=PL[k];
- var lbl=th?['ฟังเสียงอ่าน','ฟังแบบพูดช้าๆ']:['Listen','Listen slowly'];
- var spk=(CANSAY&&d[2]!=null)?'<button class="sp" type="button" data-say="'+d[0]+'" data-rate="0.85" aria-label="'+lbl[0]+'" title="'+lbl[0]+'"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path class="w1" d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="w2" d="M17.6 6.6a7.7 7.7 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="sp slow" type="button" data-say="'+d[0]+'" data-rate="0.4" aria-label="'+lbl[1]+'" title="'+lbl[1]+'"><span aria-hidden="true">\ud83d\udc22</span></button>':'';
- return '<span class="pcw"><span class="top"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span></span><span class="btns">'+spk+'<a class="ab am" href="'+amap(k)+'" target="_blank" rel="noopener">Amap</a><a class="ab gm" href="'+gmap(k)+'" target="_blank" rel="noopener">Google Maps</a><button class="cp" type="button" data-cp="'+d[0]+'" aria-label="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'" title="'+(th?'คัดลอกชื่อจีน':'Copy Chinese name')+'"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></span></span>'}).join('')+'</span>'}
+function chips(keys){if(!keys||!keys.length)return '';var th=LANG==='th';
+ var L=th?['ฟัง','ช้า','คัดลอก']:['Listen','Slow','Copy'];
+ var A=th?['ฟังเสียงอ่านชื่อจีน','ฟังแบบพูดช้าๆ','คัดลอกชื่อจีน']:['Hear the Chinese name','Hear it slowly','Copy Chinese name'];
+ var pin='<svg class="pn" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>';
+ var spkIc='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path class="w1" d="M15 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="w2" d="M17.6 6.6a7.7 7.7 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+ var cpIc='<svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+ return '<span class="pcs">'+keys.map(function(k){var d=PL[k];
+  var tools=(CANSAY&&d[2]!=null?'<button class="sp" type="button" data-say="'+d[0]+'" data-rate="0.85" aria-label="'+A[0]+'" title="'+A[0]+'">'+spkIc+'<span class="tl">'+L[0]+'</span></button><button class="sp slow" type="button" data-say="'+d[0]+'" data-rate="0.4" aria-label="'+A[1]+'" title="'+A[1]+'"><span class="em" aria-hidden="true">🐢</span><span class="tl">'+L[1]+'</span></button>':'')+'<button class="cp" type="button" data-cp="'+d[0]+'" aria-label="'+A[2]+'" title="'+A[2]+'">'+cpIc+'<span class="tl">'+L[2]+'</span></button>';
+  return '<span class="pcw"><span class="top"><span class="nm"><span class="zh" lang="zh-Hans">'+d[0]+'</span><span class="py">'+d[1]+'</span></span></span><span class="tools" role="group">'+tools+'</span><span class="btns"><a class="ab am" href="'+amap(k)+'" target="_blank" rel="noopener">'+pin+'Amap</a><a class="ab gm" href="'+gmap(k)+'" target="_blank" rel="noopener">'+pin+'Google Maps</a></span></span>'}).join('')+'</span>'}
 function cu(n){return '<span class="cu" data-to="'+n+'" style="min-width:'+String(n).length+'ch">'+n+'</span>'}
 function fp(t){var m=String(t).match(/\b[A-Z]{3}\b/g);if(!m||m.length<2)return '';return '<span class="fp" aria-hidden="true"><b>'+m[0]+'</b><span class="trk"><i class="tr"></i><img class="pl" src="img/09-flight-silhouette.svg" alt=""></span><b>'+m[m.length-1]+'</b></span>'}
 function kv(a,b){return '<div class="kv"><b>'+a+'</b><span>'+b+'</span></div>'}
