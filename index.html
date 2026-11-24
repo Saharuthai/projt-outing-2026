@@ -374,7 +374,7 @@ var DAYS=[
  [{th:'กลางวัน',en:'Noon'},'eat',0,{th:'มื้อกลางวัน ร้าน Fuyuanchunxiao',en:'Lunch at Fuyuanchunxiao restaurant'}],
  [{th:'บ่าย',en:'Afternoon'},'shop',0,{th:'ช้อปที่ Florentia Village Outlet',en:'Shop at Florentia Village Outlet'},['florentia']],
  ['17:00','',0,{th:'ทุกกลุ่มเดินทางไปสนามบินผู่ตง (PVG)',en:'All groups travel to Pudong Airport (PVG)'},['pvg']],
- ['19:00–22:25','fly',1,{th:'Shanghai Airlines FM853 PVG → BKK · กลุ่ม B2 · ถึงสุวรรณภูมิ 22:25',en:'Shanghai Airlines FM853 PVG → BKK · Group B2 · arrives Suvarnabhumi 22:25'}],
+ ['19:00–22:25','fly',1,{th:'Shanghai Airlines FM853 PVG → BKK · กลุ่ม B2 · กระเป๋า 23 กก. · ถึงสุวรรณภูมิ 22:25',en:'Shanghai Airlines FM853 PVG → BKK · Group B2 · baggage 23 kg · arrives Suvarnabhumi 22:25'}],
  [{th:'ค่ำ',en:'Night'},'',0,{th:'พักที่ Asia Airport Hotel (มีอาหารค่ำแบบกล่องให้ในห้อง)',en:'Stay at Asia Airport Hotel (boxed late-night meal in the room)'}]],
  dress:[{im:['07-29-smart-casual'],l:[[{th:'SMART CASUAL',en:'SMART CASUAL'},{th:'เสื้อสีขาว เบลเซอร์สีเบจ กางเกงยีนส์สีเข้ม',en:'White top, beige blazer, dark jeans'}]]}]},
 {c:'#6a2c91',ic:'09-flight-silhouette',wd:{th:'จันทร์',en:'Mon'},d:30,
@@ -422,7 +422,7 @@ var FL={
  0:[{c:'FD3261',al:'Air Asia',r:'KKC → DMK',t:'16:20–17:20',d:{th:'25 พ.ย.',en:'25 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'A2'},
     {c:'MU548',al:'China Eastern',r:'BKK → PVG',t:'01:55–07:10',d:{th:'26 พ.ย. (เช้ามืด)',en:'26 Nov (early morning)'},b:{th:'กระเป๋า 23 กก. (1 ชิ้น)',en:'Baggage 23 kg (1 piece)'},g:'B2'}],
  1:[{c:'MU548',al:'China Eastern',r:'BKK → PVG',t:'01:55–07:10',d:{th:'26 พ.ย.',en:'26 Nov'},b:{th:'กระเป๋า 23 กก. (1 ชิ้น)',en:'Baggage 23 kg (1 piece)'},g:'B2'}],
- 4:[{c:'FM853',al:'Shanghai Airlines',r:'PVG → BKK',t:'19:00–22:25',d:{th:'29 พ.ย.',en:'29 Nov'},g:'B2'}],
+ 4:[{c:'FM853',al:'Shanghai Airlines',r:'PVG → BKK',t:'19:00–22:25',d:{th:'29 พ.ย.',en:'29 Nov'},b:{th:'กระเป๋า 23 กก.',en:'Baggage 23 kg'},g:'B2'}],
  5:[{c:'FD3248',al:'Air Asia',r:'DMK → KKC',t:'10:45–11:50',d:{th:'30 พ.ย.',en:'30 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'C1'}]};
 function flHTML(i){
  var P=LANG==='th',L=FL[i];
@@ -548,11 +548,11 @@ function freeHTML(){
 }
 function summaryHTML(){
  var P=LANG==='th',h='';
- var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',bg:'สัมภาระ (ทุกเที่ยวบิน)',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
-  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',bg:'Baggage (every flight)',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
+ var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',bg:'สัมภาระ',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
+  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',bg:'Baggage',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
  var m=P?'พ.ย.':'Nov';
  h+='<section class="card sc">'+pill('#24406e','09-flight-silhouette',N.fl)+
-  kv('25 '+m+' · FD3261 (A2)','Air Asia<br>KKC → DMK<br>16:20–17:20<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('26 '+m+' · MU548 (B2)','China Eastern<br>BKK → PVG<br>01:55–07:10<br>'+(P?'กระเป๋า 23 กก. (1 ชิ้น)':'Baggage 23 kg (1 piece)'))+kv('29 '+m+' · FM853 (B2)','Shanghai Airlines<br>PVG → BKK<br>19:00–22:25')+kv('30 '+m+' · FD3248 (C1)','Air Asia<br>DMK → KKC<br>10:45–11:50<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+'</section>';
+  kv('25 '+m+' · FD3261 (A2)','Air Asia<br>KKC → DMK<br>16:20–17:20<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('26 '+m+' · MU548 (B2)','China Eastern<br>BKK → PVG<br>01:55–07:10<br>'+(P?'กระเป๋า 23 กก. (1 ชิ้น)':'Baggage 23 kg (1 piece)'))+kv('29 '+m+' · FM853 (B2)','Shanghai Airlines<br>PVG → BKK<br>19:00–22:25<br>'+(P?'กระเป๋า 23 กก.':'Baggage 23 kg'))+kv('30 '+m+' · FD3248 (C1)','Air Asia<br>DMK → KKC<br>10:45–11:50<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+'</section>';
  h+='<section class="card sc mp">'+pill('#b3261e','09-meeting-pin',N.mp)+
   kv('25 '+m+' 14:00',P?'สนามบินขอนแก่น (A2 / FD3261)':'Khon Kaen Airport (A2 / FD3261)')+
   kv('25 '+m+' 21:30',P?'เคาน์เตอร์ สนามบินสุวรรณภูมิ (B2 / MU548)':'Counter, Suvarnabhumi Airport (B2 / MU548)')+
@@ -565,8 +565,8 @@ function summaryHTML(){
   '<div class="note" style="margin-top:8px">Jin Jiang Tower: '+(P?'แอร์ ทีวี ไดร์เป่าผม เครื่องรีดผ้า มินิบาร์ · อาหารเช้าบุฟเฟ่ต์ ฟิตเนส สระในร่ม ATM WiFi ฟรี Room Service':'A/C, TV, hair dryer, ironing set, minibar · buffet breakfast, gym, indoor pool, ATM, free WiFi, room service')+'</div>'+
   '<img class="hotelimg" src="photo/07-hotel-twin-room.jpg" alt="" loading="lazy"></section>';
  h+='<section class="card sc">'+pill('#a8520a','09-suitcase-silhouette',N.bg)+
-  '<div class="big bg1"><div>'+(P?'กระเป๋าโหลด':'Checked bag')+'<b>'+(P?'ไม่เกิน '+cu(20)+' กก.':'Max '+cu(20)+' kg')+'</b></div><div>'+(P?'ถือขึ้นเครื่อง':'Carry-on')+'<b>'+(P?'ไม่เกิน '+cu(7)+' กก.':'Max '+cu(7)+' kg')+'</b></div></div>'+
-  '<div class="note">'+(P?'ขนาดไม่เกิน 30 นิ้ว (โหลด) / 20 นิ้ว (ถือขึ้นเครื่อง)':'Size limit 30 in (checked) / 20 in (carry-on)')+'</div></section>';
+  '<div class="big bg1"><div>'+(P?'กระเป๋าโหลด · ขอนแก่น ↔ กรุงเทพฯ':'Checked bag · Khon Kaen ↔ Bangkok')+'<b>'+(P?'ไม่เกิน '+cu(20)+' กก.':'Max '+cu(20)+' kg')+'</b></div><div>'+(P?'กระเป๋าโหลด · กรุงเทพฯ ↔ เซี่ยงไฮ้':'Checked bag · Bangkok ↔ Shanghai')+'<b>'+(P?'ไม่เกิน '+cu(23)+' กก.':'Max '+cu(23)+' kg')+'</b></div></div>'+
+  '<div class="note">'+(P?'ถือขึ้นเครื่อง ไม่เกิน '+cu(7)+' กก. · ขนาดไม่เกิน 30 นิ้ว (โหลด) / 20 นิ้ว (ถือขึ้นเครื่อง)':'Carry-on max '+cu(7)+' kg · Size limit 30 in (checked) / 20 in (carry-on)')+'</div></section>';
  h+='<section class="card sc">'+pill('#00796b','09-bus-front',N.bus)+
   '<div style="font-size:15.5px;line-height:1.55"><b>'+(P?'กลุ่มในจีน: BUS 5':'China group: BUS 5')+'</b> · Trust Finance, Risk Tech<br>'+(P?'แต่ละบัสมีทีมงานจาก Agency 1 คน และไกด์ประจำถิ่น 1 คน':'Each bus has 1 agency staff member and 1 local guide')+'</div></section>';
  h+='<section class="card sc">'+pill('#1565a8','09-sun',N.wx)+
