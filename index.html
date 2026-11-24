@@ -265,6 +265,15 @@ html.dark .cp{background:#2a2740;color:#a9c0ff;-webkit-text-fill-color:#a9c0ff;b
 html.dark .cp.ok{background:#2fa66a;color:#fff;-webkit-text-fill-color:#fff}
 html.dark .ab.am{background:#4a6fc9}
 html.dark .ab.gm{background:#2a2740;color:#a9c0ff;-webkit-text-fill-color:#a9c0ff;border-color:rgba(143,176,255,.35)}
+/* contacts */
+.lks{display:flex;gap:8px;margin:2px 0 10px}
+.lk{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background:#b3261e;color:#fff;-webkit-text-fill-color:#fff;font-weight:800;font-size:14px;text-decoration:none;text-align:center;padding:4px 8px;transition:transform .12s}
+.lk:active{transform:scale(.97)}
+html.dark .lk{background:#c0443b}
+.tel{color:#b3261e;-webkit-text-fill-color:#b3261e;font-weight:800;text-decoration:none;padding:10px 0 10px 14px;margin:-10px 0}
+html.dark .tel{color:#ff9a90;-webkit-text-fill-color:#ff9a90}
+.zhaddr{margin-top:8px;padding:10px 12px;border-radius:12px;background:rgba(36,64,110,.07);border:1px solid rgba(36,64,110,.18);font:600 15px/1.6 'PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;color:var(--tx)}
+html.dark .zhaddr{background:rgba(143,176,255,.1);border-color:rgba(143,176,255,.25)}
 /* counters */
 .cu{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* checklist */
@@ -334,7 +343,7 @@ var DAYS=[
  ['09:00','',0,{th:'เดินทางเข้าเมือง',en:'Travel into the city'}],
  ['10:00','pagoda',0,{th:'วัดหลงหัว',en:'Longhua Temple'},['longhua']],
  ['12:00–13:00','eat',0,{th:'มื้อกลางวัน ร้าน Heji',en:'Lunch at Heji restaurant'}],
- ['13:00–14:00','hotel',0,{th:'ไปโรงแรม Jin Jiang Tower พักผ่อนตามอัธยาศัย (เช็คอินหลัง 14:00)',en:'Go to Jin Jiang Tower hotel and rest (check-in from 14:00)'}],
+ ['13:00–14:00','hotel',0,{th:'ไปโรงแรม Jin Jiang Tower พักผ่อนตามอัธยาศัย (เช็คอินหลัง 14:00)',en:'Go to Jin Jiang Tower hotel and rest (check-in from 14:00)'},['hotel']],
  ['16:00','',0,{th:'ออกจากโรงแรม',en:'Leave the hotel'}],
  ['16:30–17:30','cam',0,{th:'ถ่ายรูปกลุ่มที่ The Bund',en:'Group photo at The Bund'},['bund']],
  ['17:30–18:00','eat',0,{th:'เดินทางไปมื้อเย็น ร้าน Huangpujiangan (มีเครื่องดื่ม)',en:'Travel to dinner at Huangpujiangan restaurant (drinks included)'}],
@@ -452,6 +461,7 @@ var PL={
  rockbund:['外滩源','Wàitānyuán',31.244389,121.48416],
  anfu:['安福路','Ānfú Lù',31.215618,121.438035],
  xintiandi:['新天地','Xīntiāndì',31.221931,121.470437],
+ hotel:['上海新锦江大酒店','Shànghǎi Xīn Jǐnjiāng Dàjiǔdiàn',31.222507,121.458169],
  disney:['上海迪士尼乐园','Shànghǎi Díshìní Lèyuán',31.146252,121.656283]
 };
 function wgs2gcj(lat,lon){
@@ -548,8 +558,8 @@ function freeHTML(){
 }
 function summaryHTML(){
  var P=LANG==='th',h='';
- var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',bg:'สัมภาระ',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
-  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',bg:'Baggage',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
+ var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',sos:'ติดต่อ & ฉุกเฉิน',bg:'สัมภาระ',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
+  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',sos:'Contacts & emergency',bg:'Baggage',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
  var m=P?'พ.ย.':'Nov';
  h+='<section class="card sc">'+pill('#24406e','09-flight-silhouette',N.fl)+
   kv('25 '+m+' · FD3261 (A2)','Air Asia<br>KKC → DMK<br>16:20–17:20<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('26 '+m+' · MU548 (B2)','China Eastern<br>BKK → PVG<br>01:55–07:10<br>'+(P?'กระเป๋า 23 กก. (1 ชิ้น)':'Baggage 23 kg (1 piece)'))+kv('29 '+m+' · FM853 (B2)','Shanghai Airlines<br>PVG → BKK<br>19:00–22:25')+kv('30 '+m+' · FD3248 (C1)','Air Asia<br>DMK → KKC<br>10:45–11:50<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+'</section>';
@@ -559,10 +569,21 @@ function summaryHTML(){
   kv('27 '+m+' 08:30',P?'ห้องประชุมโรงแรม':'Hotel meeting room')+
   kv('29 '+m+' 17:00',P?'ทุกกลุ่มเดินทางไปสนามบินผู่ตง (PVG)':'All groups travel to Pudong Airport (PVG)')+
   kv('30 '+m+' 08:00',P?'ล็อบบี้โรงแรม (C1 / FD3248)':'Hotel lobby (C1 / FD3248)')+'</section>';
+ h+='<section class="card sc">'+pill('#b3261e','09-meeting-pin',N.sos)+
+  '<div class="lks"><a class="lk" href="https://woxa-trip-care-2026.vercel.app/" target="_blank" rel="noopener">WOXA Trip Care</a><a class="lk" href="https://lin.ee/Utku6qk" target="_blank" rel="noopener">LINE OA</a></div>'+
+  '<div class="note">'+(P?'เว็บแอปทางการของทริป (ตั๋วเครื่องบิน โปรแกรม ปุ่มโทรฉุกเฉิน) และ LINE OA สำหรับข่าวสารล่าสุด · ถ้า LINE ใช้ไม่ได้ในจีน ให้ยึดประกาศทีมงานประจำบัสและช่อง SOS':'Official trip web app (flights, itinerary, emergency call) and LINE OA for the latest updates · if LINE does not work in China, follow your bus staff and the SOS channel')+'</div>'+
+  kv(P?'ตำรวจจีน':'China police','<a class="tel" href="tel:110">110</a>')+
+  kv(P?'รถพยาบาลจีน':'China ambulance','<a class="tel" href="tel:120">120</a>')+
+  kv(P?'ดับเพลิงจีน':'China fire','<a class="tel" href="tel:119">119</a>')+
+  kv('Jin Jiang Tower','<a class="tel" href="tel:+862164151188">+86 21 6415 1188</a>')+
+  kv(P?'กงสุลไทย เซี่ยงไฮ้ (ฉุกเฉิน)':'Thai Consulate Shanghai (emergency)','<a class="tel" href="tel:+8618516268776">+86 185 1626 8776</a>')+
+  '<div class="note" style="margin-top:10px"><b>'+(P?'บัตรแท็กซี่ · ให้คนขับดู':'Taxi card · show the driver')+'</b></div>'+
+  chips(['hotel'])+
+  '<div class="zhaddr" lang="zh-Hans">上海市黄浦区长乐路161号<br>近淮海中路地铁站3号口<br>地铁13号线 淮海中路站 3号口（步行约50米）</div></section>';
  h+='<section class="card sc">'+pill('#1565a8','09-hotel-tower',N.ho)+
-  '<div style="font-size:15.5px;line-height:1.55"><b>Jin Jiang Tower '+(P?'เซี่ยงไฮ้':'Shanghai')+'</b><br>'+(P?'เช็คอิน 26 พ.ย. หลัง 14:00 · เช็คเอาต์ 29 พ.ย.':'Check-in 26 Nov after 14:00 · Check-out 29 Nov')+'</div>'+
+  '<div style="font-size:15.5px;line-height:1.55"><b>Jin Jiang Tower '+(P?'เซี่ยงไฮ้':'Shanghai')+'</b><br>'+(P?'เช็คอิน 26 พ.ย. หลัง 14:00 · เช็คเอาต์ 29 พ.ย. (12:00)':'Check-in 26 Nov after 14:00 · Check-out 29 Nov (12:00)')+'</div>'+
   '<div style="font-size:15.5px;line-height:1.55;margin-top:8px"><b>Asia Airport Hotel '+(P?'กรุงเทพฯ':'Bangkok')+'</b><br>'+(P?'คืนวันที่ 29 พ.ย. (มีอาหารค่ำแบบกล่องให้ในห้อง)':'Night of 29 Nov (boxed late-night meal in the room)')+'</div>'+
-  '<div class="note" style="margin-top:8px">Jin Jiang Tower: '+(P?'แอร์ ทีวี ไดร์เป่าผม เครื่องรีดผ้า มินิบาร์ · อาหารเช้าบุฟเฟ่ต์ ฟิตเนส สระในร่ม ATM WiFi ฟรี Room Service':'A/C, TV, hair dryer, ironing set, minibar · buffet breakfast, gym, indoor pool, ATM, free WiFi, room service')+'</div>'+
+  '<div class="note" style="margin-top:8px">Jin Jiang Tower: '+(P?'แอร์ ทีวี ไดร์เป่าผม เครื่องรีดผ้า มินิบาร์ · อาหารเช้าบุฟเฟ่ต์ (06:30–10:00) ฟิตเนส สระในร่ม ATM WiFi ฟรี Room Service':'A/C, TV, hair dryer, ironing set, minibar · buffet breakfast (06:30–10:00), gym, indoor pool, ATM, free WiFi, room service')+'</div>'+
   '<img class="hotelimg" src="photo/07-hotel-twin-room.jpg" alt="" loading="lazy"></section>';
  h+='<section class="card sc">'+pill('#a8520a','09-suitcase-silhouette',N.bg)+
   '<div class="big bg1"><div>'+(P?'กระเป๋าโหลด · ขอนแก่น ↔ กรุงเทพฯ':'Checked bag · Khon Kaen ↔ Bangkok')+'<b>'+(P?'ไม่เกิน '+cu(20)+' กก.':'Max '+cu(20)+' kg')+'</b></div><div>'+(P?'กระเป๋าโหลด · กรุงเทพฯ → เซี่ยงไฮ้ (MU548)':'Checked bag · Bangkok → Shanghai (MU548)')+'<b>'+(P?'ไม่เกิน '+cu(23)+' กก.':'Max '+cu(23)+' kg')+'</b></div></div>'+
