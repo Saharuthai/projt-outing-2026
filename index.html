@@ -438,15 +438,15 @@ var TD=todayIdx();
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function pill(color,icon,text){return '<div class="pill" style="background:'+color+'"><img src="img/'+icon+'.svg" alt="">'+esc(text)+'</div>'}
 var PL={
- /* [Chinese name, pinyin, lat, lon]  lat/lon = WGS84 from OpenStreetMap (Nominatim). sbx has no verified point, so it uses a name search. */
+ /* [Chinese name, pinyin, lat, lon]  lat/lon = WGS84 from OpenStreetMap (Nominatim). sbx point = centre of HKRI Taikoo Hui complex (789 West Nanjing Rd), approximate. */
  longhua:['龙华寺','Lónghuá Sì',31.176792,121.44725],
- bund:['外滩','Wàitān',31.235336,121.487632],
+ bund:['外滩','Wàitān',31.241028,121.485964],
  zhouzhuang:['周庄古镇','Zhōuzhuāng Gǔzhèn',31.11508,120.845943],
  zhujiajiao:['朱家角古镇','Zhūjiājiǎo Gǔzhèn',31.116346,121.049214],
  chenghuang:['上海城隍庙','Shànghǎi Chénghuáng Miào',31.227879,121.488191],
  florentia:['上海佛罗伦萨小镇','Shànghǎi Fóluólúnsà Xiǎozhèn',31.197896,121.76014],
- pvg:['浦东国际机场','Pǔdōng Guójì Jīchǎng',31.142736,121.804113],
- sbx:['星巴克臻选上海烘焙工坊','Xīngbākè Zhēnxuǎn Shànghǎi Hōngbèi Gōngfáng'],
+ pvg:['浦东国际机场T1航站楼','Pǔdōng Guójì Jīchǎng T1 Hángzhànlóu',31.151124,121.798652],
+ sbx:['星巴克臻选上海烘焙工坊','Xīngbākè Zhēnxuǎn Shànghǎi Hōngbèi Gōngfáng',31.230982,121.458519],
  tunnel:['外滩观光隧道','Wàitān Guānguāng Suìdào',31.24155,121.486085],
  nanjing:['南京路步行街','Nánjīng Lù Bùxíngjiē',31.237684,121.475302],
  rockbund:['外滩源','Wàitānyuán',31.244389,121.48416],
