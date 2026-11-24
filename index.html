@@ -274,6 +274,10 @@ html.dark .lk{background:#c0443b}
 html.dark .tel{color:#ff9a90;-webkit-text-fill-color:#ff9a90}
 .zhaddr{margin-top:8px;padding:10px 12px;border-radius:12px;background:rgba(36,64,110,.07);border:1px solid rgba(36,64,110,.18);font:600 15px/1.6 'PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;color:var(--tx)}
 html.dark .zhaddr{background:rgba(143,176,255,.1);border-color:rgba(143,176,255,.25)}
+.plan{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.08)}
+.plan:first-of-type{margin-top:4px;padding-top:0;border-top:0}
+html.dark .plan{border-top-color:rgba(255,255,255,.12)}
+.plan>b{display:block;margin-bottom:2px}
 /* counters */
 .cu{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* checklist */
@@ -331,22 +335,24 @@ var DAYS=[
  ['14:00','pin',0,{th:'นัดพบที่สนามบินขอนแก่น (กลุ่ม A2)',en:'Meet at Khon Kaen Airport (Group A2)'}],
  ['16:20–17:20','fly',1,{th:'Air Asia FD3261 ขอนแก่น → ดอนเมือง (KKC → DMK) · กระเป๋า 20 กก.',en:'Air Asia FD3261 Khon Kaen → Don Mueang (KKC → DMK) · baggage 20 kg'}],
  [{th:'ต่อมา',en:'Then'},'',0,{th:'รถบัสพร้อมทีมงานดูแล พาไปสนามบินสุวรรณภูมิ (ถึงประมาณ 18:30)',en:'Bus with staff to Suvarnabhumi Airport (arrive about 18:30)'}],
- ['21:30','pin',0,{th:'นัดพบที่เคาน์เตอร์ สนามบินสุวรรณภูมิ (กลุ่ม B2 / MU548)',en:'Meet at the counter, Suvarnabhumi Airport (Group B2 / MU548)'}],
- ['01:55–07:10','fly',1,{th:'(เช้ามืดวันที่ 26 พ.ย.) China Eastern MU548 BKK → เซี่ยงไฮ้ (PVG) · กลุ่ม B2 · กระเป๋า 23 กก. (1 ชิ้น)',en:'(early 26 Nov) China Eastern MU548 BKK → Shanghai (PVG) · Group B2 · baggage 23 kg (1 piece)'}]],
+ [{th:'เย็น',en:'Evening'},'',0,{th:'บริการ SET BOX ที่สนามบินขอนแก่น ท่านละ 1 ชุด · รับค่าอาหาร Cash Back 150 บาท/ท่าน ที่สุวรรณภูมิ',en:'SET BOX meal at Khon Kaen Airport (1 per person) · Cash Back of 150 baht per person at Suvarnabhumi'}],
+ ['21:30','pin',0,{th:'นัดพบที่ชั้น 4 เคาน์เตอร์ China Eastern (MU) สนามบินสุวรรณภูมิ (กลุ่ม B2 / MU548)',en:'Meet at the China Eastern (MU) counter, 4th floor, Suvarnabhumi Airport (Group B2 / MU548)'}],
+ ['01:55–07:10','fly',1,{th:'(เช้ามืดวันที่ 26 พ.ย.) China Eastern MU548 BKK → เซี่ยงไฮ้ (PVG) · กลุ่ม B2 · กระเป๋า 20 กก.',en:'(early 26 Nov) China Eastern MU548 BKK → Shanghai (PVG) · Group B2 · baggage 20 kg'}]],
  dress:[{im:['07-25-airport-look'],l:[[{th:'AIRPORT LOOK',en:'AIRPORT LOOK'},{th:'แจ็กเก็ตสีดำ เสื้อยืดสีขาว กางเกงวอร์มสีเทา รองเท้าผ้าใบสีขาว',en:'Black jacket, white T-shirt, grey sweatpants, white sneakers'}]]}]},
 {c:'#1565a8',ic:'09-sun',wd:{th:'พฤหัสบดี',en:'Thu'},d:26,
  title:{th:'เที่ยวเซี่ยงไฮ้',en:'Exploring Shanghai'},
  ph:['02a-longhua-temple','02b-the-bund'],
  rows:[
- ['01:55–07:10','fly',1,{th:'China Eastern MU548 BKK → เซี่ยงไฮ้ (PVG) · กลุ่ม B2 · กระเป๋า 23 กก. (1 ชิ้น) (มีแซนด์วิชแจกก่อนขึ้นเครื่อง)',en:'China Eastern MU548 BKK → Shanghai (PVG) · Group B2 · baggage 23 kg (1 piece) (sandwiches provided before boarding)'}],
+ ['01:55–07:10','fly',1,{th:'China Eastern MU548 BKK → เซี่ยงไฮ้ (PVG) · กลุ่ม B2 · กระเป๋า 20 กก. (มีแซนด์วิชแจกก่อนขึ้นเครื่อง)',en:'China Eastern MU548 BKK → Shanghai (PVG) · Group B2 · baggage 20 kg (sandwiches provided before boarding)'}],
  ['06:25–07:55','bag',0,{th:'รับกระเป๋า / ทำธุระส่วนตัว',en:'Collect luggage / personal errands'}],
  ['09:00','',0,{th:'เดินทางเข้าเมือง',en:'Travel into the city'}],
  ['10:00','pagoda',0,{th:'วัดหลงหัว',en:'Longhua Temple'},['longhua']],
  ['12:00–13:00','eat',0,{th:'มื้อกลางวัน ร้าน Heji',en:'Lunch at Heji restaurant'}],
  ['13:00–14:00','hotel',0,{th:'ไปโรงแรม Jin Jiang Tower พักผ่อนตามอัธยาศัย (เช็คอินหลัง 14:00)',en:'Go to Jin Jiang Tower hotel and rest (check-in from 14:00)'},['hotel']],
- ['16:00','',0,{th:'ออกจากโรงแรม',en:'Leave the hotel'}],
- ['16:30–17:30','cam',0,{th:'ถ่ายรูปกลุ่มที่ The Bund',en:'Group photo at The Bund'},['bund']],
+ ['16:30','pin',0,{th:'นัดพร้อมกันที่ล็อบบี้โรงแรม',en:'Meet at the hotel lobby'}],
+ ['17:00','cam',0,{th:'ถ่ายรูปรวมคณะที่ The Bund',en:'Group photo at The Bund'},['bund']],
  ['17:30–18:00','eat',0,{th:'เดินทางไปมื้อเย็น ร้าน Huangpujiangan (มีเครื่องดื่ม)',en:'Travel to dinner at Huangpujiangan restaurant (drinks included)'}],
+ ['20:00','',0,{th:'เดินเล่นช้อปปิ้งถนนหนานจิงลู่ (Nanjing Road)',en:'Stroll and shop on Nanjing Road'},['nanjing']],
  ['21:00','',0,{th:'กลับโรงแรม',en:'Return to hotel'}]],
  dress:[{im:['07-26-smart-casual'],l:[
   [{th:'กลางวัน: SMART CASUAL',en:'Daytime: SMART CASUAL'},{th:'เสื้อลายขวางขาว-ดำ กางเกงขายาวสีขาว รองเท้าหุ้มส้นโทนขาว-ดำ',en:'Black-and-white striped top, white trousers, black-and-white closed shoes'}],
@@ -358,11 +364,12 @@ var DAYS=[
  [{th:'เช้า',en:'Morning'},'',0,{th:'อาหารเช้าที่ห้องอาหารโรงแรม',en:'Breakfast at the hotel restaurant'}],
  ['08:30','pin',0,{th:'รวมตัวที่ห้องประชุมโรงแรม',en:'Gather at the hotel meeting room'}],
  ['08:30–11:30','',0,{th:'กิจกรรมเสริมสร้างความบันเทิง',en:'Fun team activities'}],
- ['12:00','eat',0,{th:'มื้อกลางวัน ร้าน Jinmilou',en:'Lunch at Jinmilou restaurant'}],
- [{th:'บ่าย',en:'Afternoon'},'',0,{th:'เที่ยวเมืองน้ำ Zhouzhuang และจูเจียเจี่ยว พร้อมกิจกรรมล่าสมบัติ',en:'Visit Zhouzhuang water town and Zhujiajiao, with a treasure hunt'},['zhouzhuang','zhujiajiao']],
+ ['11:30','eat',0,{th:'มื้อกลางวัน ร้าน Jinmilou',en:'Lunch at Jinmilou restaurant'}],
+ [{th:'บ่าย',en:'Afternoon'},'',0,{th:'เที่ยวเมืองโบราณกลางน้ำจูเจียเจี่ยว (Zhujiajiao Water Town) ล่องเรือชมหมู่บ้าน พร้อมกิจกรรมตามล่าหาสมบัติ',en:'Visit Zhujiajiao ancient water town: boat ride and a treasure hunt'},['zhujiajiao']],
  ['16:30','',0,{th:'กลับโรงแรม',en:'Return to hotel'}],
- ['18:00','cam',0,{th:'ถ่ายภาพที่ฉากหลังตามธีมงาน',en:'Photo activity at the event-themed backdrop'}],
- ['19:00–22:00','eat',1,{th:'งานเลี้ยงจีนที่โรงแรม + คาราโอเกะ',en:'Chinese banquet at the hotel + karaoke'}]],
+ ['18:00','cam',0,{th:'ถ่ายภาพที่ฉากหลังตามธีมงาน (หน้าห้องจัดเลี้ยง)',en:'Photo activity at the event-themed backdrop (outside the banquet hall)'}],
+ ['18:30','eat',1,{th:'WOXA Night Party & Gala Dinner ที่ห้องจัดเลี้ยงโรงแรม · โต๊ะจีน เครื่องดื่มไม่อั้น คาราโอเกะเพลงไทย และโชว์คาบาเรต์',en:'WOXA Night Party & Gala Dinner in the hotel banquet hall · Chinese set menu, unlimited drinks, Thai karaoke and a cabaret show'}],
+ ['22:00','',0,{th:'บริการมาม่าคัพรอบดึก ท่านละ 1 ถ้วย',en:'Late-night instant noodle cup, 1 per person'}]],
  dress:[{im:['07-27-day-woxa-polo','07-27-night-chinese-party'],l:[
   [{th:'เช้า: WOXA JACKET, LONG PANTS, SNEAKERS',en:'Morning: WOXA JACKET, LONG PANTS, SNEAKERS'},{th:'กิจกรรมทีมบิลดิ้ง',en:'Team-building activities'}],
   [{th:'กลางแจ้ง: BLACK WOXA POLO, LONG PANTS, SNEAKERS',en:'Outdoors: BLACK WOXA POLO, LONG PANTS, SNEAKERS'},{th:'ช่วงออกไปท่องเที่ยว',en:'For the sightseeing outing'}],
@@ -380,11 +387,11 @@ var DAYS=[
  rows:[
  [{th:'เช้า',en:'Morning'},'',0,{th:'อาหารเช้าที่ห้องอาหารโรงแรม',en:'Breakfast at the hotel restaurant'}],
  ['09:00','',0,{th:'เช็คเอาต์ แล้วเที่ยวถนนโบราณ Chenghuangmiao',en:'Check-out, then visit Chenghuangmiao old street'},['chenghuang']],
- [{th:'กลางวัน',en:'Noon'},'eat',0,{th:'มื้อกลางวัน ร้าน Laoshaoxing',en:'Lunch at Laoshaoxing restaurant'}],
+ [{th:'กลางวัน',en:'Noon'},'eat',0,{th:'มื้อกลางวัน ร้าน Laoshaoxing (เมนูอาหารจีนและเสี่ยวหลงเปา)',en:'Lunch at Laoshaoxing restaurant (Chinese dishes and xiaolongbao)'}],
  [{th:'บ่าย',en:'Afternoon'},'shop',0,{th:'ช้อปที่ Florentia Village Outlet',en:'Shop at Florentia Village Outlet'},['florentia']],
  ['17:00','',0,{th:'ทุกกลุ่มเดินทางไปสนามบินผู่ตง (PVG)',en:'All groups travel to Pudong Airport (PVG)'},['pvg']],
- ['19:00–22:25','fly',1,{th:'Shanghai Airlines FM853 PVG → BKK · กลุ่ม B2 · ถึงสุวรรณภูมิ 22:25',en:'Shanghai Airlines FM853 PVG → BKK · Group B2 · arrives Suvarnabhumi 22:25'}],
- [{th:'ค่ำ',en:'Night'},'',0,{th:'พักที่ Asia Airport Hotel (มีอาหารค่ำแบบกล่องให้ในห้อง)',en:'Stay at Asia Airport Hotel (boxed late-night meal in the room)'}]],
+ ['19:00–22:25','fly',1,{th:'Shanghai Airlines FM853 PVG → BKK · กลุ่ม B2 · กระเป๋า 20 กก. · ถึงสุวรรณภูมิ 22:25',en:'Shanghai Airlines FM853 PVG → BKK · Group B2 · baggage 20 kg · arrives Suvarnabhumi 22:25'}],
+ [{th:'ค่ำ',en:'Night'},'',0,{th:'ขึ้นรถบัสจากสุวรรณภูมิไปพักที่ Asia Airport Hotel ดอนเมือง (มีอาหารมื้อดึกแบบกล่องให้ทานในห้อง)',en:'Bus from Suvarnabhumi to Asia Airport Hotel Don Mueang (boxed late-night meal in the room)'}]],
  dress:[{im:['07-29-smart-casual'],l:[[{th:'SMART CASUAL',en:'SMART CASUAL'},{th:'เสื้อสีขาว เบลเซอร์สีเบจ กางเกงยีนส์สีเข้ม',en:'White top, beige blazer, dark jeans'}]]}]},
 {c:'#6a2c91',ic:'09-flight-silhouette',wd:{th:'จันทร์',en:'Mon'},d:30,
  title:{th:'เดินทางกลับขอนแก่น',en:'Return to Khon Kaen'},
@@ -392,6 +399,7 @@ var DAYS=[
  rows:[
  [{th:'เช้า',en:'Morning'},'',0,{th:'อาหารเช้าที่ห้องอาหารโรงแรม',en:'Breakfast at the hotel restaurant'}],
  ['08:00','pin',0,{th:'นัดพบที่ล็อบบี้โรงแรม (กลุ่ม C1)',en:'Meet at the hotel lobby (Group C1)'}],
+ ['08:00–12:00','',0,{th:'ทุกกลุ่มเดินทางไปสนามบินดอนเมือง (DMK) ตามเวลาเที่ยวบินของแต่ละกลุ่ม · ทีมงานช่วยประสานงานการเช็กอิน',en:'All groups travel to Don Mueang Airport (DMK) according to their flight time · staff help with check-in'}],
  ['10:45–11:50','fly',1,{th:'Air Asia FD3248 ดอนเมือง → ขอนแก่น (DMK → KKC) · กระเป๋า 20 กก. (มีทีม Care คอยดูแล)',en:'Air Asia FD3248 Don Mueang → Khon Kaen (DMK → KKC) · baggage 20 kg (Care team on hand)'}],
  ['11:50–16:50','',0,{th:'ทุกกลุ่มเดินทางถึงจังหวัดขอนแก่นอย่างปลอดภัย',en:'All groups arrive safely in Khon Kaen'}]],
  dress:[{im:['07-30-airport-look'],l:[[{th:'AIRPORT LOOK',en:'AIRPORT LOOK'},null]]}]}
@@ -429,9 +437,9 @@ var LCOL={'#24406e':'#8fb0ff','#1565a8':'#6fb4f2','#b3261e':'#ff8a80','#00796b':
 DAYS.forEach(function(d){d.cl=LCOL[d.c]||d.c});
 var FL={
  0:[{c:'FD3261',al:'Air Asia',r:'KKC → DMK',t:'16:20–17:20',d:{th:'25 พ.ย.',en:'25 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'A2'},
-    {c:'MU548',al:'China Eastern',r:'BKK → PVG',t:'01:55–07:10',d:{th:'26 พ.ย. (เช้ามืด)',en:'26 Nov (early morning)'},b:{th:'กระเป๋า 23 กก. (1 ชิ้น)',en:'Baggage 23 kg (1 piece)'},g:'B2'}],
- 1:[{c:'MU548',al:'China Eastern',r:'BKK → PVG',t:'01:55–07:10',d:{th:'26 พ.ย.',en:'26 Nov'},b:{th:'กระเป๋า 23 กก. (1 ชิ้น)',en:'Baggage 23 kg (1 piece)'},g:'B2'}],
- 4:[{c:'FM853',al:'Shanghai Airlines',r:'PVG → BKK',t:'19:00–22:25',d:{th:'29 พ.ย.',en:'29 Nov'},g:'B2'}],
+    {c:'MU548',al:'China Eastern',r:'BKK → PVG',t:'01:55–07:10',d:{th:'26 พ.ย. (เช้ามืด)',en:'26 Nov (early morning)'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'B2'}],
+ 1:[{c:'MU548',al:'China Eastern',r:'BKK → PVG',t:'01:55–07:10',d:{th:'26 พ.ย.',en:'26 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'B2'}],
+ 4:[{c:'FM853',al:'Shanghai Airlines',r:'PVG → BKK',t:'19:00–22:25',d:{th:'29 พ.ย.',en:'29 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'B2'}],
  5:[{c:'FD3248',al:'Air Asia',r:'DMK → KKC',t:'10:45–11:50',d:{th:'30 พ.ย.',en:'30 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'C1'}]};
 function flHTML(i){
  var P=LANG==='th',L=FL[i];
@@ -461,6 +469,11 @@ var PL={
  rockbund:['外滩源','Wàitānyuán',31.244389,121.48416],
  anfu:['安福路','Ānfú Lù',31.215618,121.438035],
  xintiandi:['新天地','Xīntiāndì',31.221931,121.470437],
+ jingan:['静安寺','Jìng\'ān Sì',31.225215,121.440792],
+ trees:['天安千树','Tiān\'ān Qiānshù',31.250871,121.440889],
+ louis:['路易威登之舟','Lùyì Wēidēng Zhī Zhōu',31.230982,121.458519],
+ wukang:['武康大楼','Wǔkāng Dàlóu',31.206256,121.433729],
+ huaihai:['淮海中路','Huáihǎi Zhōnglù',31.224901,121.469329],
  hotel:['上海新锦江大酒店','Shànghǎi Xīn Jǐnjiāng Dàjiǔdiàn',31.222507,121.458169],
  disney:['上海迪士尼乐园','Shànghǎi Díshìní Lèyuán',31.146252,121.656283]
 };
@@ -551,21 +564,24 @@ function dayHTML(i){
 function freeHTML(){
  var P=LANG==='th';
  return '<div class="box c"><img src="img/09-bus-front.svg" alt="" style="filter:invert(28%) sepia(60%) saturate(900%) hue-rotate(130deg)">'+(P?'ติดตามเส้นทางรถบัส Free day กับ HR จากเธรดของ HR เพิ่มเติมได้เลย':"Follow the Free day bus routes with HR in HR's thread for more details")+'</div>'+
- '<div class="box w"><h5>'+(P?'สถานที่แนะนำ':'Recommended places')+'</h5>Starbucks Reserve Roastery · The Bund Sightseeing Tunnel · Nanjing Road · Rock Bund · Anfu Road · Xintiandi · Shanghai Disneyland'+chips(['sbx','tunnel','nanjing','rockbund','anfu','xintiandi','disney'])+'</div>'+
- '<div class="box"><b>'+(P?'รถบัสวัน Free day':'Free day bus')+'</b> '+(P?'ใช้งานได้ 10 ชม./วัน (ตัวอย่าง 09:00 → 19:00) ปรับเวลาออกและกลับโรงแรมได้ภายใน 10 ชม.':'Available 10 hours/day (example: 09:00 → 19:00); departure and return times can be adjusted within 10 hours.')+'</div>'+
+ '<div class="box w"><h5>'+(P?'แผนท่องเที่ยว Free day (เลือก 1 แผน)':'Free day plans (choose one)')+'</h5>'+
+ '<div class="plan"><b>Plan A · Disney</b><div>'+(P?'Shanghai Disneyland เต็มวัน (ทูมอร์โรว์แลนด์, Zootopia, ปราสาทเจ้าหญิง, ชมพลุ)':'Full day at Shanghai Disneyland (Tomorrowland, Zootopia, princess castle, fireworks)')+'</div>'+chips(['disney'])+'</div>'+
+ '<div class="plan"><b>Plan B · Classic</b><div>'+(P?'วัดจิ้งอัน (ค่าเข้า 50 หยวน/ท่าน) → 1000 Trees → ถนนหนานจิงลู่':'Jing\'an Temple (entry 50 CNY per person) → 1000 Trees → Nanjing Road')+'</div>'+chips(['jingan','trees','nanjing'])+'</div>'+
+ '<div class="plan"><b>Plan C · Lifestyle</b><div>Starbucks Reserve Roastery → The Louis (LV Ship) → Wukang Mansion → Anfu Road → Huaihai Middle Road</div>'+chips(['sbx','louis','wukang','anfu','huaihai'])+'</div></div>'+
+ '<div class="box"><b>'+(P?'รถบัสวัน Free day':'Free day bus')+'</b> '+(P?'Plan A ออก 08:00 · Plan B และ Plan C ออก 09:00 (Plan B/C 09:00–19:00) · มีไกด์และรถบัสบริการตลอดวัน · รับค่าอาหาร Cash Back 60 หยวน/ท่าน':'Plan A leaves 08:00 · Plan B and Plan C leave 09:00 (Plan B/C 09:00–19:00) · guide and bus all day · Cash Back of 60 CNY per person')+'</div>'+
  '<div class="box"><b>Disneyland (Plan A)</b> '+(P?'รถออก 08:00 กลับถึงโรงแรมภายใน 20:00 · ตั๋วไม่รวมในแพ็คเกจ ต้องจัดการเอง':'Bus leaves 08:00, back at the hotel by 20:00 · Ticket not included in the package; arrange it yourself.')+'</div>'+
  '<div class="rows" style="padding-top:0"><div class="row"><div class="tm">'+(P?'ค่ำ':'Night')+'</div><div class="tx">'+(P?'ส่งทุกคนกลับโรงแรม (สำหรับผู้ที่เดินทางกับรถบัสและไกด์ของบริษัท)':'Everyone is taken back to the hotel (for those on the company bus with a guide)')+'</div></div></div>';
 }
 function summaryHTML(){
  var P=LANG==='th',h='';
- var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',sos:'ติดต่อ & ฉุกเฉิน',bg:'สัมภาระ',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
-  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',sos:'Contacts & emergency',bg:'Baggage',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
+ var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',sos:'ติดต่อ & ฉุกเฉิน',bg:'สัมภาระ (ทุกเที่ยวบิน)',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
+  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',sos:'Contacts & emergency',bg:'Baggage (every flight)',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
  var m=P?'พ.ย.':'Nov';
  h+='<section class="card sc">'+pill('#24406e','09-flight-silhouette',N.fl)+
-  kv('25 '+m+' · FD3261 (A2)','Air Asia<br>KKC → DMK<br>16:20–17:20<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('26 '+m+' · MU548 (B2)','China Eastern<br>BKK → PVG<br>01:55–07:10<br>'+(P?'กระเป๋า 23 กก. (1 ชิ้น)':'Baggage 23 kg (1 piece)'))+kv('29 '+m+' · FM853 (B2)','Shanghai Airlines<br>PVG → BKK<br>19:00–22:25')+kv('30 '+m+' · FD3248 (C1)','Air Asia<br>DMK → KKC<br>10:45–11:50<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+'</section>';
+  kv('25 '+m+' · FD3261 (A2)','Air Asia<br>KKC → DMK<br>16:20–17:20<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('26 '+m+' · MU548 (B2)','China Eastern<br>BKK → PVG<br>01:55–07:10<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('29 '+m+' · FM853 (B2)','Shanghai Airlines<br>PVG → BKK<br>19:00–22:25<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('30 '+m+' · FD3248 (C1)','Air Asia<br>DMK → KKC<br>10:45–11:50<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+'</section>';
  h+='<section class="card sc mp">'+pill('#b3261e','09-meeting-pin',N.mp)+
   kv('25 '+m+' 14:00',P?'สนามบินขอนแก่น (A2 / FD3261)':'Khon Kaen Airport (A2 / FD3261)')+
-  kv('25 '+m+' 21:30',P?'เคาน์เตอร์ สนามบินสุวรรณภูมิ (B2 / MU548)':'Counter, Suvarnabhumi Airport (B2 / MU548)')+
+  kv('25 '+m+' 21:30',P?'ชั้น 4 เคาน์เตอร์ China Eastern (MU) สนามบินสุวรรณภูมิ (B2 / MU548)':'4th floor, China Eastern (MU) counter, Suvarnabhumi Airport (B2 / MU548)')+
   kv('27 '+m+' 08:30',P?'ห้องประชุมโรงแรม':'Hotel meeting room')+
   kv('29 '+m+' 17:00',P?'ทุกกลุ่มเดินทางไปสนามบินผู่ตง (PVG)':'All groups travel to Pudong Airport (PVG)')+
   kv('30 '+m+' 08:00',P?'ล็อบบี้โรงแรม (C1 / FD3248)':'Hotel lobby (C1 / FD3248)')+'</section>';
@@ -582,12 +598,12 @@ function summaryHTML(){
   '<div class="zhaddr" lang="zh-Hans">上海市黄浦区长乐路161号<br>近淮海中路地铁站3号口<br>地铁13号线 淮海中路站 3号口（步行约50米）</div></section>';
  h+='<section class="card sc">'+pill('#1565a8','09-hotel-tower',N.ho)+
   '<div style="font-size:15.5px;line-height:1.55"><b>Jin Jiang Tower '+(P?'เซี่ยงไฮ้':'Shanghai')+'</b><br>'+(P?'เช็คอิน 26 พ.ย. หลัง 14:00 · เช็คเอาต์ 29 พ.ย. (12:00)':'Check-in 26 Nov after 14:00 · Check-out 29 Nov (12:00)')+'</div>'+
-  '<div style="font-size:15.5px;line-height:1.55;margin-top:8px"><b>Asia Airport Hotel '+(P?'กรุงเทพฯ':'Bangkok')+'</b><br>'+(P?'คืนวันที่ 29 พ.ย. (มีอาหารค่ำแบบกล่องให้ในห้อง)':'Night of 29 Nov (boxed late-night meal in the room)')+'</div>'+
+  '<div style="font-size:15.5px;line-height:1.55;margin-top:8px"><b>Asia Airport Hotel '+(P?'ดอนเมือง':'Don Mueang')+'</b><br>'+(P?'คืนวันที่ 29 พ.ย. (มีอาหารมื้อดึกแบบกล่องให้ในห้อง)':'Night of 29 Nov (boxed late-night meal in the room)')+'</div>'+
   '<div class="note" style="margin-top:8px">Jin Jiang Tower: '+(P?'แอร์ ทีวี ไดร์เป่าผม เครื่องรีดผ้า มินิบาร์ · อาหารเช้าบุฟเฟ่ต์ (06:30–10:00) ฟิตเนส สระในร่ม ATM WiFi ฟรี Room Service':'A/C, TV, hair dryer, ironing set, minibar · buffet breakfast (06:30–10:00), gym, indoor pool, ATM, free WiFi, room service')+'</div>'+
   '<img class="hotelimg" src="photo/07-hotel-twin-room.jpg" alt="" loading="lazy"></section>';
  h+='<section class="card sc">'+pill('#a8520a','09-suitcase-silhouette',N.bg)+
-  '<div class="big bg1"><div>'+(P?'กระเป๋าโหลด · ขอนแก่น ↔ กรุงเทพฯ':'Checked bag · Khon Kaen ↔ Bangkok')+'<b>'+(P?'ไม่เกิน '+cu(20)+' กก.':'Max '+cu(20)+' kg')+'</b></div><div>'+(P?'กระเป๋าโหลด · กรุงเทพฯ → เซี่ยงไฮ้ (MU548)':'Checked bag · Bangkok → Shanghai (MU548)')+'<b>'+(P?'ไม่เกิน '+cu(23)+' กก.':'Max '+cu(23)+' kg')+'</b></div></div>'+
-  '<div class="note">'+(P?'ถือขึ้นเครื่อง ไม่เกิน '+cu(7)+' กก. · ขนาดไม่เกิน 30 นิ้ว (โหลด) / 20 นิ้ว (ถือขึ้นเครื่อง)':'Carry-on max '+cu(7)+' kg · Size limit 30 in (checked) / 20 in (carry-on)')+'</div></section>';
+  '<div class="big bg1"><div>'+(P?'กระเป๋าโหลด':'Checked bag')+'<b>'+(P?'ไม่เกิน '+cu(20)+' กก.':'Max '+cu(20)+' kg')+'</b></div><div>'+(P?'ถือขึ้นเครื่อง':'Carry-on')+'<b>'+(P?'ไม่เกิน '+cu(7)+' กก.':'Max '+cu(7)+' kg')+'</b></div></div>'+
+  '<div class="note">'+(P?'ขนาดไม่เกิน 30 นิ้ว (โหลด) / 20 นิ้ว (ถือขึ้นเครื่อง)':'Size limit 30 in (checked) / 20 in (carry-on)')+'</div></section>';
  h+='<section class="card sc">'+pill('#00796b','09-bus-front',N.bus)+
   '<div style="font-size:15.5px;line-height:1.55"><b>'+(P?'กลุ่มในจีน: BUS 5':'China group: BUS 5')+'</b> · Trust Finance, Risk Tech<br>'+(P?'แต่ละบัสมีทีมงานจาก Agency 1 คน และไกด์ประจำถิ่น 1 คน':'Each bus has 1 agency staff member and 1 local guide')+'</div></section>';
  h+='<section class="card sc">'+pill('#1565a8','09-sun',N.wx)+
