@@ -294,6 +294,38 @@ html.dark .plan{border-top-color:rgba(255,255,255,.12)}
 .ck span{transition:color .3s,-webkit-text-fill-color .3s}
 #theme.spin{animation:spin .55s cubic-bezier(.3,.8,.3,1)}
 body,.card{transition:background .3s,color .3s}
+/* dark mode: softer, less glare */
+html.dark{--tx:#d6d3df}
+html.dark .hero .shade{background:linear-gradient(180deg,rgba(13,14,38,.92),rgba(13,14,38,.64) 60%,rgba(13,14,38,.84))}
+html.dark .eyebrow{color:#e8c690}
+html.dark h1,html.dark .place{color:#ebe9f1}
+html.dark .date{background:#cfc9da;color:#6e1b16}
+html.dark .team{background:rgba(31,28,47,.9);color:var(--tx)}
+html.dark .team b{color:#eea59d}
+html.dark .team .n{color:#a9bce6}
+html.dark .tab{color:#d3d0dd}
+html.dark .tab.on{color:#e9e7f0}
+html.dark .tab.on .td{color:#e9e7f0}
+html.dark .tab .td{color:#eda58a}
+html.dark .dh{color:#f1eff6;filter:brightness(.78) saturate(.88)}
+html.dark .dh .ic,html.dark .pill img{filter:brightness(0) invert(.86)}
+html.dark .pill{color:#e9e7f0}
+html.dark .ttl{filter:saturate(.82)}
+html.dark .row .tm{filter:saturate(.8)}
+html.dark .row.hi .tm{color:#eba39b}
+html.dark .row.hi .tx{color:#f0c3bd}
+html.dark .fp,html.dark .tel{color:#eba39b;-webkit-text-fill-color:#eba39b}
+html.dark .mp .kv b{color:#eba39b}
+html.dark .bg1 b{color:#e3a766}
+html.dark .bg2 b{color:#84b0dc}
+html.dark .box.c{color:#86d0c3}
+html.dark .box h5{color:#58c3b3}
+html.dark .nav button{color:#9db2e6}
+html.dark .ab.gm,html.dark .cp,html.dark .pcw .py{-webkit-text-fill-color:currentColor}
+html.dark .dress .im img{filter:brightness(.8) contrast(.96)}
+html.dark .ph img,html.dark .hotelimg{filter:brightness(.88)}
+html.dark .hero .bg{filter:brightness(.9)}
+html.dark .foot img{filter:brightness(.85)}
 /* theme crossfade */
 html.theming *,html.theming *:before,html.theming *:after{transition-property:background-color,color,border-color,box-shadow,fill,-webkit-text-fill-color,opacity!important;transition-duration:.45s!important;transition-timing-function:ease!important;transition-delay:0s!important}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}.rows:after{transform:none!important}}
