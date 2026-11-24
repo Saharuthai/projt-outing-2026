@@ -278,6 +278,8 @@ html.dark .zhaddr{background:rgba(143,176,255,.1);border-color:rgba(143,176,255,
 .plan:first-of-type{margin-top:4px;padding-top:0;border-top:0}
 html.dark .plan{border-top-color:rgba(255,255,255,.12)}
 .plan>b{display:block;margin-bottom:2px}
+.steps{margin:8px 0 10px;padding-left:22px;font-size:14.5px;line-height:1.5}
+.steps li{margin:3px 0}
 /* counters */
 .cu{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* checklist */
@@ -574,8 +576,8 @@ function freeHTML(){
 }
 function summaryHTML(){
  var P=LANG==='th',h='';
- var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',sos:'ติดต่อ & ฉุกเฉิน',bg:'สัมภาระ (ทุกเที่ยวบิน)',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
-  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',sos:'Contacts & emergency',bg:'Baggage (every flight)',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
+ var N={th:{fl:'สรุปไฟลต์ PRJ-T',mp:'จุดนัดพบสำคัญ',ho:'ที่พัก',sos:'ติดต่อ & ฉุกเฉิน',esim:'eSIM อินเทอร์เน็ตในจีน',bg:'สัมภาระ (ทุกเที่ยวบิน)',bus:'BUS 5 (26–29 พ.ย.)',wx:'อากาศ',ck:'เช็กลิสต์ก่อนเดินทาง',es:'eSIM · ปลั๊ก · Agency',bn:'ของห้ามนำเข้าจีน / ต้องสำแดง (อัปเดตปี 2026)'},
+  en:{fl:'PRJ-T flight summary',mp:'Key meeting points',ho:'Hotels',sos:'Contacts & emergency',esim:'eSIM: internet in China',bg:'Baggage (every flight)',bus:'BUS 5 (26–29 Nov)',wx:'Weather',ck:'Pre-trip checklist',es:'eSIM · Plugs · Agency kit',bn:'Banned or declarable items in China (2026 update)'}}[LANG];
  var m=P?'พ.ย.':'Nov';
  h+='<section class="card sc">'+pill('#24406e','09-flight-silhouette',N.fl)+
   kv('25 '+m+' · FD3261 (A2)','Air Asia<br>KKC → DMK<br>16:20–17:20<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('26 '+m+' · MU548 (B2)','China Eastern<br>BKK → PVG<br>01:55–07:10<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('29 '+m+' · FM853 (B2)','Shanghai Airlines<br>PVG → BKK<br>19:00–22:25<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+kv('30 '+m+' · FD3248 (C1)','Air Asia<br>DMK → KKC<br>10:45–11:50<br>'+(P?'กระเป๋า 20 กก.':'Baggage 20 kg'))+'</section>';
@@ -610,6 +612,27 @@ function summaryHTML(){
   '<div class="big bg2"><div>'+(P?'กลางวัน':'Daytime')+'<b>'+cu(13)+'–'+cu(15)+'°C</b></div><div>'+(P?'กลางคืน':'Night')+'<b>'+cu(7)+'–'+cu(9)+'°C</b></div></div>'+
   '<div class="note">'+(P?'ท้องฟ้าโปร่งหรือมีเมฆบางส่วน · อย่าลืมเสื้อกันหนาว':'Clear or partly cloudy · bring a warm jacket')+'</div></section>';
  h+='<section class="card sc">'+pill('#1b7f4b','09-calendar',N.ck)+CK.map(function(c,i){return '<button class="ck'+(done[i]?' on':'')+'" data-ck="'+i+'"><i></i><span><em class="tt">'+esc(T(c))+'</em></span></button>'}).join('')+'</section>';
+ h+='<section class="card sc">'+pill('#6a2c91','09-group',N.esim)+
+  '<div class="note">'+(P?'บริษัทสนับสนุนแพ็กเกจ <b>10 GB ใช้ได้ 5 วัน</b> (209 บาท) ถ้าอยากได้เน็ตเพิ่มหรือแบบ Unlimited เลือกเพิ่มได้ และจ่ายส่วนต่างเอง':'The company covers a <b>10 GB, 5-day</b> package (THB 209). You can top up or choose Unlimited and pay the difference yourself.')+'</div>'+
+  '<ol class="steps">'+(P?[
+   'สมัครบัญชีด้วยอีเมล <b>woxacorp.com</b> เท่านั้น',
+   'เลือกประเทศ <b>จีน</b>',
+   'เลือก <b>Best จีน+</b>',
+   'เลือกประกันการเดินทาง <b>Easy</b>',
+   'เลือกปริมาณเน็ตและจำนวนวัน',
+   'ตอนชำระเงิน ใส่ <b>Unique Code</b> ของตัวเองในช่อง "รหัสคูปอง"',
+   'รับ QR ทันทีที่หน้า "eSIM ของฉัน" (ถ้าแจ้งใช้ SIM card ให้รับ Vacay Card+50 จัดส่ง 2–5 วัน)']:[
+   'Create an account with your <b>woxacorp.com</b> email only',
+   'Select <b>China</b> as the destination',
+   'Select <b>Best จีน+</b>',
+   'Choose the <b>Easy</b> travel insurance',
+   'Choose the data allowance and number of days',
+   'At payment, enter your own <b>Unique Code</b> in the coupon code field',
+   'Get your QR code instantly under "My eSIM" (if you requested a SIM card, claim the Vacay Card+50, delivered in 2–5 days)']).map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol>'+
+  '<div class="lks"><a class="lk" href="https://esim.vacay.asia/" target="_blank" rel="noopener">'+(P?'เว็บติดตั้ง eSIM':'eSIM website')+'</a><a class="lk" href="https://pelican-3mtjlj.my.canva.site/howtoactivate" target="_blank" rel="noopener">'+(P?'คู่มือฉบับเต็ม':'Full guide')+'</a></div>'+
+  '<div class="box w" style="margin:10px 0 0;padding:10px 12px"><h5>'+(P?'TikTok ในจีน (คำแนะนำของ Vacay)':'TikTok in China (Vacay advice)')+'</h5>'+(P?'ตั้งค่าตอนอยู่ในประเทศไทยเท่านั้น และ <b>ห้ามเชื่อมต่อ Wi-Fi ในจีน</b> เด็ดขาด ถ้าถูกบล็อก อาจต้องออกนอกประเทศก่อนและรอราว 7 วัน':'Set it up while still in Thailand, and <b>never connect to Wi-Fi in China</b>. If blocked, you may need to leave the country and wait about 7 days.')+
+   ' <a class="tel" style="padding:0;margin:0" href="https://esim.vacay.asia/th/sp-tiktok-settings" target="_blank" rel="noopener">'+(P?'ดูวิธีตั้งค่า':'See how to set up')+'</a></div>'+
+  '<div class="note" style="margin-top:10px">'+(P?'ตรวจชื่อ-นามสกุลและ Unique Code ให้ถูกต้อง · ใช้ Code ของตัวเองเท่านั้น · Code อยู่ข้างชื่อภาษาอังกฤษของคุณในรายชื่อที่ประกาศใน Slack (ไม่แสดงบนหน้านี้)':'Double-check your full name and Unique Code · use your own code only · your code is next to your English name in the list announced on Slack (not shown on this page)')+'</div></section>';
  h+='<section class="card sc">'+pill('#6a2c91','09-group',N.es)+
   '<div style="font-size:15.5px;line-height:1.6"><b>eSIM:</b> '+(P?'ทีมเตรียมให้ ใช้ E-SIM VACAY 5 วัน (10GB) ใช้ AI และ TikTok ได้ (ต้องตั้งค่า TikTok)':'Provided by the team: E-SIM VACAY, 5 days (10GB); AI and TikTok work (TikTok needs setup)')+
   '<br><b>'+(P?'ไฟฟ้า:':'Power:')+'</b> '+(P?'220V / 50Hz ปลั๊ก Type A, C, I · บริษัทเตรียม Adaptor ให้':'220V / 50Hz, plug Types A, C, I · the company provides adapters')+
