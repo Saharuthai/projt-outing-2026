@@ -61,20 +61,20 @@ main{padding:12px 12px 8px}
 .dh .ic{width:40px;height:40px;filter:brightness(0) invert(1);flex:none}
 .dh .d1{font-size:26px;font-weight:800;line-height:1.15}
 .dh .d2{font-size:14px;font-weight:500;opacity:.95}
-.ttl{padding:12px 16px 4px;font-size:20px;font-weight:800;line-height:1.35;color:var(--dc)}
-.ph{display:grid;gap:6px;padding:6px 10px 0}
+.ttl{padding:14px 16px 6px;font-size:20px;font-weight:800;line-height:1.35;color:var(--dc)}
+.ph{display:grid;gap:8px;padding:6px 10px 0}
 .ph.two{grid-template-columns:1fr 1fr}
 .ph img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px}
 .ph.one img{aspect-ratio:16/10}
-.rows{padding:8px 14px 12px;display:flex;flex-direction:column;gap:2px}
-.row{display:flex;gap:10px;padding:8px 6px;border-radius:10px;align-items:flex-start}
+.rows{padding:16px 14px 14px;display:flex;flex-direction:column;gap:4px}
+.row{display:flex;gap:10px;padding:9px 4px 9px 14px;border-radius:12px;align-items:flex-start}
 .row .tm{color:var(--dc);flex:none;width:92px;font-weight:700;font-size:14.5px;line-height:1.45}
 .row .tx{flex:1;font-size:15.5px;line-height:1.5}
 .row .tx img{display:inline-block;width:22px;height:22px;vertical-align:-4px;margin-right:6px}
 .row.hi{background:#fcefd9}
 .row.hi .tm{color:#8a4a0f}
 .row.hi .tx{font-weight:700;color:#6b3a0a}
-.dress{margin:4px 12px 14px;background:#f1ece4;border-radius:12px;padding:10px 12px}
+.dress{margin:12px 12px 14px;background:#f1ece4;border-radius:12px;padding:10px 12px}
 .dress h4{margin:0 0 6px;font-size:13px;color:#5a4a3a;font-weight:700}
 .dress .im{display:grid;gap:8px;grid-template-columns:1fr}
 .dress .im img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#fff;border-radius:8px}
@@ -89,7 +89,8 @@ main{padding:12px 12px 8px}
 .pill{display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:800;font-size:14px;border-radius:99px;padding:3px 14px 3px 8px}
 .pill img{width:22px;height:22px;filter:brightness(0) invert(1)}
 .sc{padding:14px 16px}
-.sc .pill{margin-bottom:10px}
+.sc .pill{margin-bottom:12px}
+.sc .note+.kv{margin-top:10px}
 .kv{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid #e9e2d6;font-size:15px}
 .kv:first-of-type{border-top:0}
 .kv b{flex:none}
@@ -100,7 +101,7 @@ main{padding:12px 12px 8px}
 .big{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
 .big div{border-radius:12px;padding:10px;text-align:center;font-size:14px}
 .big div b{display:block;font-size:24px;font-weight:800;line-height:1.3}
-.bg1 div{background:#fff3e6}.bg1 b{color:#b0692b}
+.bg1 div{background:#fff3e6}.bg1 b{color:#9c5a1c}
 .bg2 div{background:#e8f1fb}.bg2 b{color:#3a6ea5}
 .note{font-size:13.5px;color:#3b4452;line-height:1.5}
 .ck{display:flex;gap:12px;align-items:flex-start;width:100%;border:0;background:none;-webkit-appearance:none;appearance:none;color:var(--tx);-webkit-text-fill-color:var(--tx);text-align:left;font:inherit;font-size:15.5px;padding:9px 2px;border-top:1px solid #e9e2d6;min-height:44px}
@@ -118,7 +119,7 @@ main{padding:12px 12px 8px}
 .nav{display:flex;gap:10px;margin:0 0 12px}
 .nav button{flex:1;border:0;border-radius:12px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.14);padding:12px;font:700 15px 'Noto Sans Thai',sans-serif;color:#24406e;min-height:48px}
 .nav button:disabled{opacity:.35}
-.fl{margin:6px 14px 2px;border-radius:12px;background:#eef2fb;border-left:5px solid var(--dc);padding:8px 12px}
+.fl{margin:8px 14px 12px;border-radius:12px;background:#eef2fb;border-left:5px solid var(--dc);padding:8px 12px}
 .fl h6{margin:0 0 4px;font-size:12.5px;font-weight:800;letter-spacing:.3px;color:var(--dc);display:flex;align-items:center;gap:6px}
 .fl h6 img{width:16px;height:16px}
 .fl .f{padding:5px 0;border-top:1px solid rgba(0,0,0,.08);font-size:14.5px;line-height:1.45}
@@ -350,7 +351,8 @@ html.dark .tab{color:#d3d0dd}
 html.dark .tab.on{color:#e6e4ea}
 html.dark .tab.on .td{color:#e6e4ea}
 html.dark .tab .td{color:#eda58a}
-html.dark .dh{color:#f1eff6;filter:brightness(.78) saturate(.88)}
+html.dark .dh{color:#f4f2f9;filter:none !important;background-image:linear-gradient(rgba(0,0,0,.30),rgba(0,0,0,.30)) !important}
+html.dark .pill{background-image:linear-gradient(rgba(0,0,0,.30),rgba(0,0,0,.30)) !important}
 html.dark .dh .ic,html.dark .pill img{filter:brightness(0) invert(.86)}
 html.dark .pill{color:#e6e4ea}
 html.dark .ttl{filter:saturate(.82)}
@@ -449,11 +451,11 @@ var DAYS=[
  ['09:00','',0,{th:'เดินทางเข้าเมือง',en:'Travel into the city'}],
  ['10:00','pagoda',0,{th:'วัดหลงหัว',en:'Longhua Temple'},['longhua']],
  ['12:00–13:00','eat',0,{th:'มื้อกลางวัน ร้าน Heji',en:'Lunch at Heji restaurant'}],
- ['13:00–14:00','hotel',0,{th:'ไปโรงแรม Jin Jiang Tower พักผ่อนตามอัธยาศัย (เช็คอินหลัง 14:00)',en:'Go to Jin Jiang Tower hotel and rest (check-in from 14:00)'},['hotel']],
+ [{th:'ต่อมา',en:'Then'},'shop',0,{th:'เดินทางไปช้อปปิ้งที่ถนนหนานจิงลู่ (Nanjing Road) ก่อน',en:'Go shopping on Nanjing Road first'},['nanjing']],
+ [{th:'จากนั้น',en:'After that'},'hotel',0,{th:'ไปโรงแรม Jin Jiang Tower พักผ่อนตามอัธยาศัย (เช็คอินหลัง 14:00)',en:'Go to Jin Jiang Tower hotel and rest (check-in from 14:00)'},['hotel']],
  ['16:30','pin',0,{th:'นัดพร้อมกันที่ล็อบบี้โรงแรม',en:'Meet at the hotel lobby'}],
  ['17:00','cam',0,{th:'ถ่ายรูปรวมคณะที่ The Bund',en:'Group photo at The Bund'},['bund']],
  ['17:30–18:00','eat',0,{th:'เดินทางไปมื้อเย็น ร้าน Huangpujiangan (มีเครื่องดื่ม)',en:'Travel to dinner at Huangpujiangan restaurant (drinks included)'}],
- ['20:00','',0,{th:'เดินเล่นช้อปปิ้งถนนหนานจิงลู่ (Nanjing Road)',en:'Stroll and shop on Nanjing Road'},['nanjing']],
  ['21:00','',0,{th:'กลับโรงแรม',en:'Return to hotel'}]],
  dress:[{im:['07-26-smart-casual'],l:[
   [{th:'กลางวัน: SMART CASUAL',en:'Daytime: SMART CASUAL'},{th:'เสื้อลายขวางขาว-ดำ กางเกงขายาวสีขาว รองเท้าหุ้มส้นโทนขาว-ดำ',en:'Black-and-white striped top, white trousers, black-and-white closed shoes'}],
@@ -465,7 +467,8 @@ var DAYS=[
  [{th:'เช้า',en:'Morning'},'',0,{th:'อาหารเช้าที่ห้องอาหารโรงแรม',en:'Breakfast at the hotel restaurant'}],
  ['08:30','pin',0,{th:'รวมตัวที่ห้องประชุมโรงแรม',en:'Gather at the hotel meeting room'}],
  ['08:30–11:30','',0,{th:'กิจกรรมเสริมสร้างความบันเทิง',en:'Fun team activities'}],
- ['11:30','eat',0,{th:'มื้อกลางวัน ร้าน Jinmilou',en:'Lunch at Jinmilou restaurant'}],
+ [{th:'ต่อมา',en:'Then'},'cam',0,{th:'เดินทางไปแวะถ่ายรูปที่ The Bund (หาดไว่ทาน)',en:'Stop for photos at The Bund (Waitan)'},['bund']],
+ [{th:'จากนั้น',en:'After that'},'eat',0,{th:'มื้อกลางวัน ร้าน Jinmiluo',en:'Lunch at Jinmiluo restaurant'}],
  [{th:'บ่าย',en:'Afternoon'},'',0,{th:'เที่ยวเมืองโบราณกลางน้ำจูเจียเจี่ยว (Zhujiajiao Water Town) ล่องเรือชมหมู่บ้าน พร้อมกิจกรรมตามล่าหาสมบัติ',en:'Visit Zhujiajiao ancient water town: boat ride and a treasure hunt'},['zhujiajiao']],
  ['16:30','',0,{th:'กลับโรงแรม',en:'Return to hotel'}],
  ['18:00','cam',0,{th:'ถ่ายภาพที่ฉากหลังตามธีมงาน (หน้าห้องจัดเลี้ยง)',en:'Photo activity at the event-themed backdrop (outside the banquet hall)'}],
@@ -482,7 +485,7 @@ var DAYS=[
  [{th:'เช้า',en:'Morning'},'',0,{th:'อาหารเช้าที่ห้องอาหารโรงแรม',en:'Breakfast at the hotel restaurant'}]],
  extra:'free',
  dress:[{im:[],l:[[{th:'FREE DAY',en:'FREE DAY'},{th:'แต่งกายตามสบาย',en:'Dress as you like'}]]}]},
-{c:'#b0692b',ic:'09-shopping-bag',wd:{th:'อาทิตย์',en:'Sun'},d:29,
+{c:'#9c5a1c',ic:'09-shopping-bag',wd:{th:'อาทิตย์',en:'Sun'},d:29,
  title:{th:'ท่องเที่ยวและเดินทางกลับกรุงเทพฯ',en:'Sightseeing and return to Bangkok'},
  ph:['05a-chenghuangmiao','05b-florentia-village'],
  rows:[
@@ -534,7 +537,7 @@ var BAN=[
 /* Dress-code images (hi-res JPG, 1200x675). Name -> file in img/. If a name is missing here the old 07-*.svg is used.
    To change an image, replace the file (or point the name at a new file) and bump VERSION in sw.js. */
 var HI={'07-25-airport-look':'07-25-airport-look.jpg','07-30-airport-look':'07-25-airport-look.jpg','07-26-smart-casual':'07-26-smart-casual.jpg','07-27-day-woxa-polo':'07-27-day-woxa-polo.jpg','07-27-night-chinese-party':'07-27-night-chinese-party.jpg','07-29-smart-casual':'07-29-smart-casual.jpg'};
-var LCOL={'#24406e':'#9db6e0','#3a6ea5':'#8fb4e6','#a8323a':'#eea29d','#4c7f6e':'#7fc4ae','#b0692b':'#e8b27a','#6d4a8c':'#c1a6dc'};
+var LCOL={'#24406e':'#9db6e0','#3a6ea5':'#8fb4e6','#a8323a':'#eea29d','#4c7f6e':'#7fc4ae','#9c5a1c':'#e8b27a','#6d4a8c':'#c1a6dc'};
 DAYS.forEach(function(d){d.cl=LCOL[d.c]||d.c});
 var FL={
  0:[{c:'FD3261',al:'Air Asia',r:'KKC → DMK',t:'16:20–17:20',d:{th:'25 พ.ย.',en:'25 Nov'},b:{th:'กระเป๋า 20 กก.',en:'Baggage 20 kg'},g:'A2'},
@@ -694,7 +697,7 @@ function summaryHTML(){
   kv('30 '+m+' 08:00',P?'ล็อบบี้โรงแรม (C1 / FD3248)':'Hotel lobby (C1 / FD3248)')+'</section>';
  h+='<section class="card sc">'+pill('#a8323a','09-meeting-pin',N.sos)+
   '<div class="lks"><a class="lk" href="https://woxa-trip-care-2026.vercel.app/" target="_blank" rel="noopener">WOXA Trip Care</a><a class="lk" href="https://lin.ee/Utku6qk" target="_blank" rel="noopener">LINE OA</a></div>'+
-  '<div class="note">'+(P?'เว็บแอปทางการของทริป (ตั๋วเครื่องบิน โปรแกรม ปุ่มโทรฉุกเฉิน) และ LINE OA สำหรับข่าวสารล่าสุด · ถ้า LINE ใช้ไม่ได้ในจีน ให้ยึดประกาศทีมงานประจำบัสและช่อง SOS':'Official trip web app (flights, itinerary, emergency call) and LINE OA for the latest updates · if LINE does not work in China, follow your bus staff and the SOS channel')+'</div>'+
+  '<div class="note">'+(P?'เว็บแอปทางการของทริป (ตั๋วเครื่องบิน โปรแกรม ปุ่มโทรฉุกเฉิน) · LINE OA เป็นช่องทางหลักที่บริษัทและ Agency ใช้แจ้งข่าวสารและประกาศสำคัญ ให้เพิ่มเพื่อนไว้ · ถ้า LINE ใช้ไม่ได้ในจีน ให้ยึดประกาศทีมงานประจำบัสและช่อง SOS':'Official trip web app (flights, itinerary, emergency call) · LINE OA is the main channel the company and agency use for news and important announcements, so please add it · if LINE does not work in China, follow your bus staff and the SOS channel')+'</div>'+
   kv(P?'ตำรวจจีน':'China police','<a class="tel" href="tel:110">110</a>')+
   kv(P?'รถพยาบาลจีน':'China ambulance','<a class="tel" href="tel:120">120</a>')+
   kv(P?'ดับเพลิงจีน':'China fire','<a class="tel" href="tel:119">119</a>')+
@@ -708,7 +711,7 @@ function summaryHTML(){
   '<div style="font-size:15.5px;line-height:1.55;margin-top:8px"><b>Asia Airport Hotel '+(P?'ดอนเมือง':'Don Mueang')+'</b><br>'+(P?'คืนวันที่ 29 พ.ย. (มีอาหารมื้อดึกแบบกล่องให้ในห้อง)':'Night of 29 Nov (boxed late-night meal in the room)')+'</div>'+
   '<div class="note" style="margin-top:8px">Jin Jiang Tower: '+(P?'แอร์ ทีวี ไดร์เป่าผม เครื่องรีดผ้า มินิบาร์ · อาหารเช้าบุฟเฟ่ต์ (06:30–10:00) ฟิตเนส สระในร่ม ATM WiFi ฟรี Room Service':'A/C, TV, hair dryer, ironing set, minibar · buffet breakfast (06:30–10:00), gym, indoor pool, ATM, free WiFi, room service')+'</div>'+
   '<img class="hotelimg" src="photo/07-hotel-twin-room.jpg" alt="" loading="lazy"></section>';
- h+='<section class="card sc">'+pill('#b0692b','09-suitcase-silhouette',N.bg)+
+ h+='<section class="card sc">'+pill('#9c5a1c','09-suitcase-silhouette',N.bg)+
   '<div class="big bg1"><div>'+(P?'กระเป๋าโหลด':'Checked bag')+'<b>'+(P?'ไม่เกิน '+cu(20)+' กก.':'Max '+cu(20)+' kg')+'</b></div><div>'+(P?'ถือขึ้นเครื่อง':'Carry-on')+'<b>'+(P?'ไม่เกิน '+cu(7)+' กก.':'Max '+cu(7)+' kg')+'</b></div></div>'+
   '<div class="note">'+(P?'ขนาดไม่เกิน 30 นิ้ว (โหลด) / 20 นิ้ว (ถือขึ้นเครื่อง)':'Size limit 30 in (checked) / 20 in (carry-on)')+'</div></section>';
  h+='<section class="card sc">'+pill('#4c7f6e','09-bus-front',N.bus)+
@@ -737,7 +740,7 @@ function summaryHTML(){
   '<div class="lks"><a class="lk" href="https://esim.vacay.asia/" target="_blank" rel="noopener">'+(P?'เว็บติดตั้ง eSIM':'eSIM website')+'</a><a class="lk" href="https://pelican-3mtjlj.my.canva.site/howtoactivate" target="_blank" rel="noopener">'+(P?'คู่มือฉบับเต็ม':'Full guide')+'</a></div>'+
   '<div class="box w" style="margin:10px 0 0;padding:10px 12px"><h5>'+(P?'TikTok ในจีน (คำแนะนำของ Vacay)':'TikTok in China (Vacay advice)')+'</h5>'+(P?'ตั้งค่าตอนอยู่ในประเทศไทยเท่านั้น และ <b>ห้ามเชื่อมต่อ Wi-Fi ในจีน</b> เด็ดขาด ถ้าถูกบล็อก อาจต้องออกนอกประเทศก่อนและรอราว 7 วัน':'Set it up while still in Thailand, and <b>never connect to Wi-Fi in China</b>. If blocked, you may need to leave the country and wait about 7 days.')+
    ' <a class="tel" style="padding:0;margin:0" href="https://esim.vacay.asia/th/sp-tiktok-settings" target="_blank" rel="noopener">'+(P?'ดูวิธีตั้งค่า':'See how to set up')+'</a></div>'+
-  '<div class="note" style="margin-top:10px">'+(P?'ตรวจชื่อ-นามสกุลและ Unique Code ให้ถูกต้อง · ใช้ Code ของตัวเองเท่านั้น · Code อยู่ข้างชื่อภาษาอังกฤษของคุณในรายชื่อที่ประกาศใน Slack (ไม่แสดงบนหน้านี้)':'Double-check your full name and Unique Code · use your own code only · your code is next to your English name in the list announced on Slack (not shown on this page)')+'</div></section>';
+  '<div class="note" style="margin-top:10px">'+(P?'ถ้าทำรายการไม่สำเร็จ ให้รีเฟรชหน้าเว็บแล้วลองใหม่ · ตรวจชื่อ-นามสกุลและ Unique Code ให้ถูกต้อง · ใช้ Code ของตัวเองเท่านั้น · Code อยู่ข้างชื่อภาษาอังกฤษของคุณในรายชื่อที่ประกาศใน Slack (ไม่แสดงบนหน้านี้)':'If it fails, refresh the website and try again · double-check your full name and Unique Code · use your own code only · your code is next to your English name in the list announced on Slack (not shown on this page)')+'</div></section>';
  h+='<section class="card sc">'+pill('#6d4a8c','09-group',N.es)+
   '<div style="font-size:15.5px;line-height:1.6"><b>eSIM:</b> '+(P?'ทีมเตรียมให้ ใช้ E-SIM VACAY 5 วัน (10GB) ใช้ AI และ TikTok ได้ (ต้องตั้งค่า TikTok)':'Provided by the team: E-SIM VACAY, 5 days (10GB); AI and TikTok work (TikTok needs setup)')+
   '<br><b>'+(P?'ไฟฟ้า:':'Power:')+'</b> '+(P?'220V / 50Hz ปลั๊ก Type A, C, I · บริษัทเตรียม Adaptor ให้':'220V / 50Hz, plug Types A, C, I · the company provides adapters')+
